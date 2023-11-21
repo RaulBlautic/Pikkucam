@@ -1,510 +1,433 @@
-package com.blautic.pikkucam.ble;
+package com.blautic.pikkucam.ble
 
-import static android.bluetooth.BluetoothDevice.PHY_LE_2M;
-import static android.bluetooth.BluetoothDevice.PHY_LE_CODED;
-import static android.bluetooth.BluetoothDevice.PHY_LE_CODED_MASK;
-import static android.bluetooth.BluetoothDevice.PHY_OPTION_NO_PREFERRED;
-import static android.bluetooth.BluetoothDevice.PHY_OPTION_S2;
-import static android.bluetooth.BluetoothDevice.PHY_OPTION_S8;
-import static android.bluetooth.BluetoothDevice.TRANSPORT_AUTO;
-import static android.bluetooth.BluetoothDevice.TRANSPORT_BREDR;
-import static android.bluetooth.BluetoothDevice.TRANSPORT_LE;
+import android.annotation.SuppressLint
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothGatt
+import android.bluetooth.BluetoothGattCallback
+import android.bluetooth.BluetoothGattCharacteristic
+import android.bluetooth.BluetoothGattDescriptor
+import android.bluetooth.BluetoothManager
+import android.bluetooth.BluetoothProfile
+import android.content.Context
+import android.content.Intent
+import android.os.Handler
+import android.os.SystemClock
+import android.util.Log
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.blautic.pikkucam.sns.SensorDevice
+import com.blautic.trainingapp.sensor.mpu.Mpu
+import timber.log.Timber
+import java.util.Calendar
+import java.util.UUID
 
-import android.annotation.SuppressLint;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothGatt;
-import android.bluetooth.BluetoothGattCallback;
-import android.bluetooth.BluetoothGattCharacteristic;
-import android.bluetooth.BluetoothGattDescriptor;
-import android.bluetooth.BluetoothManager;
-import android.bluetooth.BluetoothProfile;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.util.Log;
+@SuppressLint("MissingPermission")
+class BlueREMDevice(n: Int) {
 
-import androidx.annotation.RequiresApi;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+    var battery = 0
+    var closeBGatt = false
+    private var _device: BluetoothDevice? = null
+    private var cfgOk = true
+    private var avgBat: MutableList<Int> = ArrayList()
+    private var lastAdcBat = 0
+    private val lastUpdate: Calendar
+    private var isBle5 = false
+    private var mBluetoothGatt: BluetoothGatt? = null
+    private var characteristic: BluetoothGattCharacteristic? = null
+    private var number = 1
+    var isConnected = false
+        private set
 
-import com.blautic.pikkucam.cfg.CfgVals;
-import com.blautic.pikkucam.sns.SensorDevice;
-import com.blautic.pikkucam.sns.SnsCfg;
-import com.blautic.trainingapp.sensor.mpu.Mpu;
+    private var _context: Context? = null
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.UUID;
+    private val _mac: String? = null
+    private var processSettingUp = false
+    private val uuid = bleUUID.UUID_SERVICE
+    private var writingErrors = 0
 
-import timber.log.Timber;
+    lateinit var sensorDevice: SensorDevice
 
-public class BlueREMDevice {
+    private var longRange = false
 
-    public static final String TAG = "BluRem";
+    var firmwareVersion = 10
 
-    public static final String BLE_DISC = "PIKKU_BLE_DISC";
-    public static final String BLE_READ = "PIKKU_BLE_READ";
-    public static final String BLE_READ_SENSOR = "PIKKU_BLE_READ_SENSOR";
-    public static final String BLE_READ_POW = "PIKKU_BLE_READ_POW";
-    public static final String BLE_READY = "PIKKU_BLE_READY";
-    public static final String BLE_FIRMWARE_VERSION = "BLE_FIRMWARE_VERSION";
-    public static final String BLE_STATUS = "PIKKU_BLE_STATUS";
-    public static final String BLE_ERROR = "PIKKU_BLE_ERROR";
-    public static final String BLE_PHY = "PIKKU_BLE_PHY";
-    public static final String BLE_NOTIFY = "BTCSCORE_BLE_NOTIFY";
+    private val mBluetoothGattCallback: BluetoothGattCallback = object : BluetoothGattCallback() {
 
-    private static final int NSAMPLES_AVG_BATT = 3;
-    private static final int NINTERVALS_ADC = 21;
-    private static final int[] powerAdc = new int[]{1417, 1407, 1396, 1386, 1375, 1365, 1354, 1344, 1334, 1323,
-            1313, 1302, 1292, 1281, 1271, 1260, 1250, 1194, 1180, 1166, 1093};
-    private static final int[] powerPerc = new int[]{100, 95, 90, 85, 80, 75, 70, 65, 60, 55,
-            50, 45, 40, 35, 30, 25, 20, 15, 10, 5, 0};
-    private static int TH_ERRORS = 5;
-    public int battery;
-    public boolean closeBGatt = false;
-    public BluetoothDevice _device = null;
-    public SnsCfg snsCfg = new SnsCfg();
-    public boolean cfg_ok = true;
-    List<Integer> avgBat = new ArrayList<Integer>();
-    private int last_adc_bat = 0;
-    private String Name;
-    private Calendar last_update;
-    private boolean isBle5 = false;
-    private BluetoothGatt mBluetoothGatt;
-    private BluetoothGattCharacteristic Characterisc;
-    private int number = 1;
-    private boolean connected = false;
-    private Context _context;
-    private String _mac;
-    private boolean process_setting_up = false;
-    private String uuid = bleUUID.UUID_SERVICE;
-    private int writing_errors = 0;
-    private boolean postProcessValues = false;
-    private SensorDevice sensorDevice;
-    private boolean longRange = false;
-
-
-    int firmwareVersion = 10;
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    private final BluetoothGattCallback mBluetoothGattCallback = new BluetoothGattCallback() {
-        @Override
-        public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
-            super.onConnectionStateChange(gatt, status, newState);
-            Log.d("ESTADP: ", newState + "");
+        override fun onConnectionStateChange(gatt: BluetoothGatt, status: Int, newState: Int) {
+            super.onConnectionStateChange(gatt, status, newState)
+            Timber.tag("ESTATE: ").d("%s", newState)
             if (newState == BluetoothProfile.STATE_CONNECTED) {
-                connected = true;
-                Log.i("Start services", "n:" + number + " Attempting to start service discovery " + gatt.discoverServices());
+                isConnected = true
+                Timber.tag("Start services")
+                    .i("n:" + number + " Attempting to start service discovery " + gatt.discoverServices())
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-                connected = false;
-                Intent intent = new Intent(BLE_DISC);
-                intent.putExtra("device", number);
-                Log.d("DISCONECT NUMBER", number + "");
-                LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
-                //reconnected();
-            }
-
-        }
-
-        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-        @Override
-        public void onServicesDiscovered(BluetoothGatt gatt, int status) {
-            super.onServicesDiscovered(gatt, status);
-
-            if (status == BluetoothGatt.GATT_SUCCESS) {
-                connected = true;
-                cfgMPU();
-                enableNotifications();
-                //changePriorityAndPhy();
-
-                Log.d("CONNECT TRUE", mBluetoothGatt.getDevice().getAddress());
+                isConnected = false
+                val intent = Intent(BLE_DISC)
+                intent.putExtra("device", number)
+                Timber.tag("DISCONECT NUMBER").d("%s", number)
+                LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
             }
         }
 
-        @Override
-        public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-            super.onCharacteristicRead(gatt, characteristic, status);
-
+        override fun onServicesDiscovered(gatt: BluetoothGatt, status: Int) {
+            super.onServicesDiscovered(gatt, status)
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                Characterisc = characteristic;
-                String conc = "";
-                for (byte value : characteristic.getValue())
-                    conc = conc.concat(" " + Integer.toString(value & 0xff));
-                Log.i("onCharacteristicRead", "n:" + number + " " + conc);
-                if (characteristic.getUuid().toString().contains(bleUUID.UUID_PIKKU_POW)) {
-                    int x = (characteristic.getValue()[1] & 0xFF) << 8 | characteristic.getValue()[0] & 0xFF;
-                    setPowerVal(x);
-                    Intent intent = new Intent(BLE_READ_POW);
-                    intent.putExtra("device", number);
-                    intent.putExtra("data", battery);
-                    LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
-                } else if (characteristic.getUuid().toString().contains(bleUUID.UUID_PIKKU_FW_VERS)) {
-                    firmwareVersion = characteristic.getValue()[0] & 0xFF;
-                    Intent intent = new Intent(BLE_FIRMWARE_VERSION);
-                    intent.putExtra("firmware",  firmwareVersion);
-                    intent.putExtra("ble5", isBle5);
-                    LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
+                isConnected = true
+                cfgMPU()
+                enableNotifications()
+                changePriorityAndPhy()
+                Log.d("CONNECT TRUE", mBluetoothGatt!!.device.address)
+            }
+        }
+
+        override fun onCharacteristicRead(
+            gatt: BluetoothGatt,
+            characteristic: BluetoothGattCharacteristic,
+            status: Int
+        ) {
+            super.onCharacteristicRead(gatt, characteristic, status)
+            if (status == BluetoothGatt.GATT_SUCCESS) {
+                this@BlueREMDevice.characteristic = characteristic
+                var conc = ""
+                for (value in characteristic.value) conc =
+                    conc + " " + (value.toInt() and 0xff).toString()
+                Log.i("onCharacteristicRead", "n:$number $conc")
+                if (characteristic.uuid.toString().contains(bleUUID.UUID_PIKKU_POW)) {
+                    val adcValue =
+                        characteristic.value[1].toInt() and 0xFF shl 8 or (characteristic.value[0].toInt() and 0xFF)
+                    setPowerVal(adcValue)
+                    val intent = Intent(BLE_READ_POW)
+                    intent.putExtra("device", number)
+                    intent.putExtra("data", battery)
+                    LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
+                } else if (characteristic.uuid.toString().contains(bleUUID.UUID_PIKKU_FW_VERS)) {
+                    firmwareVersion = characteristic.value[0].toInt() and 0xFF
+                    val intent = Intent(BLE_FIRMWARE_VERSION)
+                    intent.putExtra("firmware", firmwareVersion)
+                    intent.putExtra("ble5", isBle5)
+                    LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
                 }
             }
         }
 
-        @Override
-        public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
-            super.onCharacteristicWrite(gatt, characteristic, status);
-
+        override fun onCharacteristicWrite(
+            gatt: BluetoothGatt,
+            characteristic: BluetoothGattCharacteristic,
+            status: Int
+        ) {
+            super.onCharacteristicWrite(gatt, characteristic, status)
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                String conc = "";
-                for (byte value : characteristic.getValue())
-                    conc = conc.concat(" " + Integer.toHexString(value & 0xff));
-                Log.i("BT Write", "n:" + number + " " + conc);
-                sensorDevice.snsCfg.setOrderResult(true);
+                var conc = ""
+                for (value in characteristic.value) conc =
+                    conc + " " + Integer.toHexString(value.toInt() and 0xff)
+                Log.i("BT Write", "n:$number $conc")
+                sensorDevice.snsCfg.setOrderResult(true)
             } else {
-                writing_errors++;
+                writingErrors++
             }
-            if (process_setting_up) cfgMPU();
+            if (processSettingUp) cfgMPU()
         }
 
-        @Override
-        public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
-            super.onCharacteristicChanged(gatt, characteristic);
-            mngOper(characteristic, "onCharacteristicChanged");
+        override fun onCharacteristicChanged(
+            gatt: BluetoothGatt,
+            characteristic: BluetoothGattCharacteristic
+        ) {
+            super.onCharacteristicChanged(gatt, characteristic)
+            manageOperations(characteristic)
         }
-    };
-
-    public BlueREMDevice(int n) {
-        this.connected = false;
-        number = n;
-        sensorDevice = new SensorDevice(number);
-        last_update = Calendar.getInstance();
     }
 
-    public SensorDevice getSensorDevice() {
-        return sensorDevice;
+    init {
+        number = n
+        sensorDevice = SensorDevice(number)
+        lastUpdate = Calendar.getInstance()
     }
 
-    @SuppressLint("MissingPermission")
-    private void changePriorityAndPhy() {
-        mBluetoothGatt.requestConnectionPriority(BluetoothGatt.CONNECTION_PRIORITY_HIGH);
-        SystemClock.sleep(150);
-
-        longRange = ((BluetoothManager) _context.getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter().isLeCodedPhySupported();
-
-        Log.d("BLE5", String.valueOf(isBle5));
-
-
+    private fun changePriorityAndPhy() {
+        mBluetoothGatt!!.requestConnectionPriority(BluetoothGatt.CONNECTION_PRIORITY_HIGH)
+        SystemClock.sleep(150)
+        longRange =
+            (_context!!.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter.isLeCodedPhySupported
+        Log.d("BLE5", isBle5.toString())
         if (longRange) {
-            Intent intent = new Intent(BLE_PHY);
-            intent.putExtra("phy", true);
-            LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
+            val intent = Intent(BLE_PHY)
+            intent.putExtra("phy", true)
+            LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
         }
-
         if (isBle5 && longRange) {
-            mBluetoothGatt.setPreferredPhy(PHY_LE_CODED_MASK, PHY_LE_CODED_MASK, PHY_OPTION_S8);
-            SystemClock.sleep(150);
+            mBluetoothGatt!!.setPreferredPhy(
+                BluetoothDevice.PHY_LE_CODED_MASK,
+                BluetoothDevice.PHY_LE_CODED_MASK,
+                BluetoothDevice.PHY_OPTION_S8
+            )
+            SystemClock.sleep(150)
         }
     }
 
-    public void reconnected() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (!connected) {
-                    connect();
-                    reconnected();
+    fun reconnected() {
+        Handler().postDelayed(object : Runnable {
+            override fun run() {
+                if (!isConnected) {
+                    connect()
+                    reconnected()
                 }
             }
-        }, 15000);
+        }, 15000)
     }
 
-    public void initDevice(BluetoothDevice bldevice, boolean isBle5) {
-        this.isBle5 = isBle5;
-        this._device = bldevice;
+    fun initDevice(bldevice: BluetoothDevice?, isBle5: Boolean) {
+        this.isBle5 = isBle5
+        _device = bldevice
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    public void connect() {
-        if (!connected) {
-            mBluetoothGatt = _device.connectGatt(_context, false, mBluetoothGattCallback, TRANSPORT_LE);
-            Log.d("CONNECT", mBluetoothGatt.getDevice().getAddress());
+    fun connect() {
+        if (!isConnected) {
+            mBluetoothGatt = _device!!.connectGatt(
+                _context,
+                false,
+                mBluetoothGattCallback,
+                BluetoothDevice.TRANSPORT_LE
+            )
+            Timber.tag("CONNECT").d(mBluetoothGatt?.device?.address ?: "")
         }
     }
 
-    public void initContextDevice(Context _context) {
-        this._context = _context;
-        sensorDevice.setContext(_context);
+    fun initContextDevice(_context: Context?) {
+        this._context = _context
+        sensorDevice.setContext(_context)
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    public void enableDataFromMPU(byte data) {
-        byte[] order = new byte[]{data};
-        writeChar(bleUUID.UUID_PIKKU_OPER, order);
-        SystemClock.sleep(150);
+    fun enableDataFromMPU(data: Byte) {
+        val order = byteArrayOf(data)
+        writeChar(bleUUID.UUID_PIKKU_OPER, order)
+        SystemClock.sleep(150)
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    public void disconnect() {
-        mBluetoothGatt.disconnect();
+
+    fun disconnect() {
+        mBluetoothGatt!!.disconnect()
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    public boolean readChar(String uuidchar) {
-        if (!connected) return false;
-        else {
-            Log.i("Servicio", new String(bleUUID.aux).replace("XXXX", uuid));
-            Log.i("Characteristic", new String(bleUUID.aux).replace("XXXX", uuidchar));
 
-            mBluetoothGatt.readCharacteristic(mBluetoothGatt.getService(UUID.
-                    fromString(new String(bleUUID.aux).replace("XXXX", uuid))).getCharacteristic(UUID.
-                    fromString(new String(bleUUID.aux).replace("XXXX", uuidchar))));
-        }
-        return true;
+    private fun readFirmwareVersion() {
+        mBluetoothGatt!!.readCharacteristic(
+            mBluetoothGatt!!.getService(UUID.fromString(bleUUID.aux.replace("XXXX", uuid)))
+                .getCharacteristic(
+                    UUID.fromString(bleUUID.aux.replace("XXXX", bleUUID.UUID_PIKKU_FW_VERS))
+                )
+        )
     }
 
-    @SuppressLint("MissingPermission")
-    public void readFirmwareVersion() {
-        mBluetoothGatt.readCharacteristic(mBluetoothGatt.getService(UUID.
-                fromString(bleUUID.aux.replace("XXXX", uuid))).getCharacteristic(UUID.
-                fromString(bleUUID.aux.replace("XXXX", bleUUID.UUID_PIKKU_FW_VERS))));
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    public Boolean enableNotification(String uuidNot) {
-        // check if we're connected
-        if (!this.connected) return false;
+    private fun enableNotification(uuidNot: String?) {
+        if (!isConnected) return
         try {
-            mBluetoothGatt.setCharacteristicNotification(mBluetoothGatt.getService(UUID
-                    .fromString(new String(bleUUID.aux).replace("XXXX", uuid))).getCharacteristic(UUID
-                    .fromString(new String(bleUUID.aux).replace("XXXX", uuidNot))), true);
-
-            for (BluetoothGattDescriptor descriptor : mBluetoothGatt.getService(UUID.fromString(new String(bleUUID.aux)
-                    .replace("XXXX", uuid))).getCharacteristic(UUID.fromString(new String(bleUUID.aux)
-                    .replace("XXXX", uuidNot))).getDescriptors()) {
-
-                descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-
-                if (mBluetoothGatt.writeDescriptor(descriptor)) {
-                    //Log.d("Notifi_Enable", "OK_check: " + uuidNoti);
-                }/* else {
-					Log.d("NotificactionERR", "ERROR_chek");
-				}*/
+            val uuid1 = UUID.fromString(bleUUID.aux.replace("XXXX", uuidNot!!))
+            mBluetoothGatt!!.setCharacteristicNotification(
+                mBluetoothGatt!!.getService(
+                    UUID.fromString(
+                        bleUUID.aux.replace("XXXX", uuid)
+                    )
+                ).getCharacteristic(uuid1), true
+            )
+            for (descriptor in mBluetoothGatt!!.getService(
+                UUID.fromString(
+                    bleUUID.aux.replace(
+                        "XXXX",
+                        uuid
+                    )
+                )
+            ).getCharacteristic(uuid1).descriptors) {
+                descriptor.value = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE
             }
-            return true;
-        } catch (Exception e) {
-            Log.e("BlueRemDevice", "n:" + number + " " + "Error writing value ", e);
-            return false;
+        } catch (e: Exception) {
+            Log.e("BlueRemDevice", "n:$number Error writing value ", e)
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    public Boolean writeChar(String uuidchar, byte[] value) {
-        if (!connected) return false;
 
-        String conc = uuidchar + " ";
-        for (byte v : value)
-            conc = conc.concat(" " + Integer.toHexString(v));
-        Log.i("BT Writing", "n:" + number + " " + conc);
-
-        mBluetoothGatt.getService(UUID.fromString(new String(bleUUID.aux).replace("XXXX", uuid)))
-                .getCharacteristic(UUID.fromString(new String(bleUUID.aux).replace("XXXX", uuidchar))).setValue(value);
-
-        return mBluetoothGatt.writeCharacteristic(mBluetoothGatt.getService(UUID.fromString(new String(bleUUID.aux)
-                .replace("XXXX", uuid))).getCharacteristic(UUID.fromString(new String(bleUUID.aux).replace("XXXX", uuidchar))));
-
+    fun writeChar(uuidchar: String, value: ByteArray): Boolean {
+        if (!isConnected) return false
+        var uuidChar = "$uuidchar "
+        for (v in value) uuidChar = uuidChar + " " + Integer.toHexString(v.toInt())
+        Log.i("BT Writing", "n:$number $uuidChar")
+        mBluetoothGatt!!.getService(UUID.fromString((bleUUID.aux).replace("XXXX", uuid)))
+            .getCharacteristic(
+                UUID.fromString(
+                    (bleUUID.aux).replace(
+                        "XXXX",
+                        uuidchar
+                    )
+                )
+            ).value = value
+        return mBluetoothGatt!!.writeCharacteristic(
+            mBluetoothGatt!!.getService(
+                UUID.fromString((bleUUID.aux).replace("XXXX", uuid))
+            ).getCharacteristic(UUID.fromString((bleUUID.aux).replace("XXXX", uuidchar)))
+        )
     }
 
-    public void setPowerVal(int adc) {
+    fun setPowerVal(adc: Int) {
+        if (adc <= 0 || adc == lastAdcBat) { return }
+        var adcValue = adc
+        if (isBle5) { adcValue /= 2 }
 
-        if (adc > 0 && adc != last_adc_bat) {
+        lastAdcBat = adcValue
 
-            if (isBle5) adc /= 2; //parche jsf por ser distinto el adc con un bit más;
-            last_adc_bat = adc;
-            double ac = 0;
-            int bat = 0;
-            String Builder = new String();
+        val bat = when {
+            adcValue >= powerAdc[0] -> 100
+            adcValue <= powerAdc[NINTERVALS_ADC - 1] -> 0
+            else -> powerPerc.firstOrNull { adcValue > it } ?: 0
+        }
 
-            //Calculamos el valor de batería desde adc
-            if (adc >= powerAdc[0]) bat = 100;
-            else if (adc <= powerAdc[NINTERVALS_ADC - 1]) bat = 0;
-            else {
-                for (int i = 1; i < NINTERVALS_ADC; i++) {
-                    if (adc > powerAdc[i]) {
-                        bat = powerPerc[i - 1];
-                        break;
-                    }
-                }
+        if (avgBat.size >= NSAMPLES_AVG_BATT) { avgBat.removeAt(0) }
+
+        avgBat.add(bat)
+
+        val builder = avgBat.joinToString(separator = " ") { "%02d".format(it) }
+
+        battery = (avgBat.average() / 5.0).toInt() * 5
+
+        Timber.tag("Datos AvgBat").i(builder)
+        Timber.tag("calc Battery").i("ADC:$adcValue CurrentBat:$bat Size:${avgBat.size} bateria:$battery")
+    }
+
+    private fun manageOperations(characteristic: BluetoothGattCharacteristic) {
+        if (characteristic.uuid.toString().contains(bleUUID.UUID_PIKKU_BTN1)) {
+            var conc = ""
+            for (value in characteristic.value) {
+                conc = conc + " " + Integer.toHexString(value.toInt() and 0xff)
             }
-
-            //Acumulamos
-            if (avgBat.size() >= NSAMPLES_AVG_BATT) avgBat.remove(0);
-
-            avgBat.add(bat);
-
-            //Calculamos la media actual
-            for (int i = 0; i < avgBat.size(); i++) {
-                Builder = Builder.concat((String.format("%02d ", avgBat.get(i))));
-                ac += avgBat.get(i);
-            }
-            this.battery = (int) (ac / avgBat.size());
-
-            //Redondeamos para mostrar
-            this.battery = (int) (Math.ceil(battery / 5d) * 5);
-
-            Log.i("Datos AvgBat", Builder);
-            Log.i("calc Battery", "ADC:" + adc + " CurrentBat:" + bat + " Size:" + avgBat.size() + " bateria:" + battery);
+            var `val` = 0
+            `val` = characteristic.value[0].toInt() and 0xFF
+            val dur = characteristic.value[2].toInt() and 0xFF shl 8 or (characteristic.value[1].toInt() and 0xFF)
+            val intent = Intent(BLE_READ)
+            intent.putExtra("team", number)
+            intent.putExtra("btn", 1)
+            intent.putExtra("data", `val`)
+            intent.putExtra("dur", dur)
+            LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
+        } else if (characteristic.uuid.toString().contains(bleUUID.UUID_PIKKU_BTN2)) {
+            var conc = ""
+            for (value in characteristic.value) conc =
+                conc + " " + Integer.toHexString(value.toInt() and 0xff)
+            val value: Int = characteristic.value[0].toInt() and 0xFF
+            val dur = characteristic.value[2].toInt() and 0xFF shl 8 or (characteristic.value[1].toInt() and 0xFF)
+            val intent = Intent(BLE_READ)
+            intent.putExtra("team", number)
+            intent.putExtra("btn", 2)
+            intent.putExtra("data", value)
+            intent.putExtra("dur", dur)
+            LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
+        } else if (characteristic.uuid.toString().contains(bleUUID.UUID_PIKKU_DATAMPU)) {
+            sensorDevice.receiveData(characteristic.value)
+            val mpu = Mpu(
+                sensorDevice.ncurrentsample,
+                sensorDevice.getValor(0),
+                sensorDevice.getValor(1),
+                sensorDevice.getValor(2),
+                sensorDevice.getValor(3),
+                sensorDevice.getValor(4),
+                sensorDevice.getValor(5),
+                sensorDevice.ndevice
+            )
+            val intent = Intent(BLE_READ_SENSOR)
+            intent.putExtra("data", mpu)
+            LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
+        } else if (characteristic.uuid.toString().contains(bleUUID.UUID_PIKKU_OPER)) {
+            val x = characteristic.value[2].toInt() and 0xFF shl 8 or (characteristic.value[1].toInt() and 0xFF)
+            setPowerVal(x)
+            Log.d(TAG, "n:$number Battery:$battery")
+            val intent = Intent(BLE_STATUS)
+            intent.putExtra("batt", battery)
+            intent.putExtra("device", number)
+            LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
         }
     }
 
-    /****************** FINAL CALLBACK ***********************************************************************/
-
-    /**
-     * Muestra y Parsea los datos recibidos y los almacena en las variables que correspondan
-     */
-
-    private void mngOper(BluetoothGattCharacteristic charac, String tag) {
-        if (charac.getUuid().toString().contains(bleUUID.UUID_PIKKU_BTN1)) {
-            String conc = "";
-
-            for (byte value : charac.getValue()) {
-                conc = conc.concat(" " + Integer.toHexString(value & 0xff));
-            }
-
-            int val = 0;
-            val = charac.getValue()[0] & 0xFF;
-            int dur = ((charac.getValue()[2] & 0xFF) << 8 | charac.getValue()[1] & 0xFF);
-            Intent intent = new Intent(BLE_READ);
-            intent.putExtra("team", number);
-            intent.putExtra("btn", 1);
-            intent.putExtra("data", val);
-            intent.putExtra("dur", dur);
-            LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
-
-        } else if (charac.getUuid().toString().contains(bleUUID.UUID_PIKKU_BTN2)) {
-            String conc = "";
-            for (byte value : charac.getValue())
-                conc = conc.concat(" " + Integer.toHexString(value & 0xff));
-
-            //Log.i("onCharacteristicChange", charac.getUuid().toString() + " " + conc);
-
-            int val = 0;
-            val = charac.getValue()[0] & 0xFF;
-            int dur = ((charac.getValue()[2] & 0xFF) << 8 | charac.getValue()[1] & 0xFF);
-            Intent intent = new Intent(BLE_READ);
-            intent.putExtra("team", number);
-            intent.putExtra("btn", 2);
-            intent.putExtra("data", val);
-            intent.putExtra("dur", dur);
-            LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
-
-        } else if (charac.getUuid().toString().contains(bleUUID.UUID_PIKKU_DATAMPU)) {
-            sensorDevice.receiveData(charac.getValue());
-            //Timber.d("SAMPLE:" + sensorDevice.ncurrentsample);
-
-            Mpu mpu = new Mpu(sensorDevice.ncurrentsample, sensorDevice.getValor(0), sensorDevice.getValor(1), sensorDevice.getValor(2),
-                    sensorDevice.getValor(3), sensorDevice.getValor(4), sensorDevice.getValor(5), sensorDevice.getNdevice());
-            Intent intent = new Intent(BLE_READ_SENSOR);
-            intent.putExtra("data", mpu);
-
-            LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
-        } else if (charac.getUuid().toString().contains(bleUUID.UUID_PIKKU_OPER)) {
-            int x = (charac.getValue()[2] & 0xFF) << 8 | charac.getValue()[1] & 0xFF;
-            setPowerVal(x);
-            Log.d(TAG, "n:" + number + " Battery:" + battery);
-
-            Intent intent = new Intent(BLE_STATUS);
-            intent.putExtra("batt", battery);
-            intent.putExtra("device", number);
-            LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
-        }
+    fun reconnect() {
+        if (mBluetoothGatt != null && !isConnected) {
+            Log.d("BT RECONNECT", "n:" + number + " " + "device: " + _device + " /UUID: " + uuid)
+            mBluetoothGatt!!.connect()
+        } else if (mBluetoothGatt == null && !isConnected) connect()
     }
 
-    public void reconnect() {
-        if (mBluetoothGatt != null && !this.connected) {
-            Log.d("BT RECONNECT", "n:" + number + " " + "device: " + this._device + " /UUID: " + this.uuid);
-            mBluetoothGatt.connect();
-        } else if (mBluetoothGatt == null && !this.connected) connect();
-    }
-
-    public void close() {
-        Log.i("CLOSE", "n:" + number + " ********* Close BlueRemDevice");
-        Intent intent = new Intent(BLE_DISC);
-        intent.putExtra("device", number);
-        LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
+    fun close() {
+        Log.i("CLOSE", "n:$number ********* Close BlueRemDevice")
+        val intent = Intent(BLE_DISC)
+        intent.putExtra("device", number)
+        LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
         if (mBluetoothGatt != null) {
-            Log.d("DISCONNECT", mBluetoothGatt.getDevice().getAddress());
-            mBluetoothGatt.disconnect();
-            mBluetoothGatt.close();
-            mBluetoothGatt = null;
+            Log.d("DISCONNECT", mBluetoothGatt!!.device.address)
+            mBluetoothGatt!!.disconnect()
+            mBluetoothGatt!!.close()
+            mBluetoothGatt = null
         }
     }
 
-    public boolean isConnected() {
-        return this.connected;
+    private fun enableNotifications() {
+        enableNotification(bleUUID.UUID_PIKKU_BTN1)
+        SystemClock.sleep(150)
+        enableNotification(bleUUID.UUID_PIKKU_BTN2)
+        SystemClock.sleep(150)
+        enableNotification(bleUUID.UUID_PIKKU_DATAMPU)
+        SystemClock.sleep(150)
+        enableNotification(bleUUID.UUID_PIKKU_OPER)
+        SystemClock.sleep(150)
     }
 
-    public String getMac() {
-        return _device.getAddress();
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    private void enableNotifications() {
-        enableNotification(bleUUID.UUID_PIKKU_BTN1);
-        SystemClock.sleep(150);
-
-        enableNotification(bleUUID.UUID_PIKKU_BTN2);
-        SystemClock.sleep(150);
-
-        enableNotification(bleUUID.UUID_PIKKU_DATAMPU);
-        SystemClock.sleep(150);
-
-        enableNotification(bleUUID.UUID_PIKKU_OPER);
-        SystemClock.sleep(150);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-    public void cfgMPU() {
-        Log.d(TAG, "n:" + number + " " + "Configuring MPU ******** ");
-        if (!process_setting_up) {
-            sensorDevice.setModoCaptura();
-            sensorDevice.setScale();
-            process_setting_up = true;
-            writing_errors = 0;
-            cfg_ok = true;
+    fun cfgMPU() {
+        Log.d(TAG, "n:$number Configuring MPU ******** ")
+        if (!processSettingUp) {
+            sensorDevice.setModoCaptura()
+            sensorDevice.setScale()
+            processSettingUp = true
+            writingErrors = 0
+            cfgOk = true
         }
-
-        if (sensorDevice.snsCfg.isAnyOrderPending()) {
-
-            if (writing_errors >= TH_ERRORS || !writeChar(sensorDevice.snsCfg.getNextOrder().getUuid(), sensorDevice.snsCfg.getNextOrder().getOrder())) {
-                Intent intent = new Intent(BLE_ERROR);
-                intent.putExtra("device", number);
-                LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
-                cfg_ok = false;
+        if (sensorDevice.snsCfg.isAnyOrderPending) {
+            if (writingErrors >= TH_ERRORS || !writeChar(
+                    sensorDevice.snsCfg.nextOrder.getUuid(),
+                    sensorDevice.snsCfg.nextOrder.getOrder()
+                )
+            ) {
+                val intent = Intent(BLE_ERROR)
+                intent.putExtra("device", number)
+                LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
+                cfgOk = false
             }
-
         } else {
-            readFirmwareVersion();
-            process_setting_up = false;
-            cfg_ok = true;
-            Intent intent = new Intent(BLE_READY);
-            intent.putExtra("device", number);
-            intent.putExtra("ble5", isBle5);
-            LocalBroadcastManager.getInstance(_context).sendBroadcast(intent);
-            sensorDevice.snsCfg.restoreList();
+            readFirmwareVersion()
+            processSettingUp = false
+            cfgOk = true
+            val intent = Intent(BLE_READY)
+            intent.putExtra("device", number)
+            intent.putExtra("ble5", isBle5)
+            LocalBroadcastManager.getInstance(_context!!).sendBroadcast(intent)
+            sensorDevice.snsCfg.restoreList()
         }
     }
 
-    public void setStoreInSampleList(boolean storeInSampleList) {
-        //if(sensorBuffer == null && storeInSampleList) sensorBuffer = new SensorBuffer();
-        sensorDevice.storeInSampleList = storeInSampleList;
-        sensorDevice.last_nsample = 0;
+    companion object {
+        const val TAG = "BluRem"
+        const val BLE_DISC = "PIKKU_BLE_DISC"
+        const val BLE_READ = "PIKKU_BLE_READ"
+        const val BLE_READ_SENSOR = "PIKKU_BLE_READ_SENSOR"
+        const val BLE_READ_POW = "PIKKU_BLE_READ_POW"
+        const val BLE_READY = "PIKKU_BLE_READY"
+        const val BLE_FIRMWARE_VERSION = "BLE_FIRMWARE_VERSION"
+        const val BLE_STATUS = "PIKKU_BLE_STATUS"
+        const val BLE_ERROR = "PIKKU_BLE_ERROR"
+        const val BLE_PHY = "PIKKU_BLE_PHY"
+        const val BLE_NOTIFY = "BTCSCORE_BLE_NOTIFY"
+        private const val NSAMPLES_AVG_BATT = 3
+        private const val NINTERVALS_ADC = 21
+        private val powerAdc = intArrayOf(
+            1417, 1407, 1396, 1386, 1375, 1365, 1354, 1344, 1334, 1323,
+            1313, 1302, 1292, 1281, 1271, 1260, 1250, 1194, 1180, 1166, 1093
+        )
+        private val powerPerc = intArrayOf(
+            100, 95, 90, 85, 80, 75, 70, 65, 60, 55,
+            50, 45, 40, 35, 30, 25, 20, 15, 10, 5, 0
+        )
+        private const val TH_ERRORS = 5
     }
-
-    public void configureTcargetDefault() {
-        getSensorDevice().snsCfg.setMpuMode(bleUUID.OPER_ACEL_RAW);
-        getSensorDevice().snsCfg.setSensorsCfg(CfgVals.BITS_ACEL, CfgVals.BITS_GYR, (byte) CfgVals.BITS_MAGNET, (byte) CfgVals.SCALE_ACC_4G,
-                (byte) CfgVals.GYR_SCALE_1000, CfgVals.BASE_PERIOD, CfgVals.PACKS_PER_INTERVAL);
-        getSensorDevice().snsCfg.createOrders();
-    }
-
 }

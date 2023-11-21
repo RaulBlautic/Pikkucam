@@ -17,15 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:visibility="gone"
-        android:id="@+id/shoot_picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/imageView4"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -169,7 +160,7 @@
         app:layout_constraintTop_toBottomOf="@id/guideline2">
 
         <TextView
-            android:id="@+id/textViewClickTitulo"
+            android:id="@+id/change_session_tittle_text"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="5dp"
@@ -247,7 +238,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:translationY="-3dp"
             android:visibility="invisible"
-            android:id="@+id/ConstraintLayoutSpinnerAI"
+            android:id="@+id/activity_selection"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -266,7 +257,7 @@
                 android:visibility="invisible"
                 tools:visibility="visible"
                 android:backgroundTint="@color/TRANSPARENT"
-                android:id="@+id/info_ia_button"
+                android:id="@+id/info_activity_button"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 app:tint="@color/WHITE"
@@ -294,7 +285,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 app:layout_constraintStart_toEndOf="@id/drawableSpinnerAI"
-                app:layout_constraintEnd_toStartOf="@id/info_ia_button"
+                app:layout_constraintEnd_toStartOf="@id/info_activity_button"
                 android:text="Selecciona una actividad"
                 android:gravity="center_vertical"
                 android:textColor="@color/WHITE"
@@ -315,7 +306,7 @@
             android:layout_marginBottom="7dp"
             android:background="@drawable/spinner_redondeado"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ConstraintLayoutSpinnerAI"
+            app:layout_constraintEnd_toStartOf="@+id/activity_selection"
             app:layout_constraintHorizontal_weight="0.5"
             app:layout_constraintStart_toEndOf="@+id/button_info"
             app:layout_constraintTop_toTopOf="parent">
@@ -342,7 +333,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/drawableSpinnerEnd"
                 app:layout_constraintStart_toEndOf="@+id/drawableSpinner"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             <ImageView
                 android:id="@+id/drawableSpinnerEnd"

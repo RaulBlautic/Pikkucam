@@ -493,19 +493,18 @@ public class FullService extends JobIntentService {
     public void closeBleTargets() {
         for (int i = CfgVals.DEVICE1; i <= CfgVals.MAX_NUMBER_DEVICES; i++) {
             if (bleTargets[i] != null) {
-                bleTargets[i].closeBGatt = true;
+                bleTargets[i].setCloseBGatt(true);
                 bleTargets[i].close();
                 bleTargets[i] = null;
             }
-            ;
         }
     }
 
     private void configureTargetDefault(int device) {
-        bleTargets[device].getSensorDevice().snsCfg.setMpuMode(bleUUID.OPER_ACEL_RAW);
-        bleTargets[device].getSensorDevice().snsCfg.setSensorsCfg(CfgVals.BITS_ACEL, CfgVals.BITS_GYR, (byte) CfgVals.BITS_MAGNET, (byte) CfgVals.SCALE_ACC_4G,
+        bleTargets[device].sensorDevice.snsCfg.setMpuMode(bleUUID.OPER_ACEL_RAW);
+        bleTargets[device].sensorDevice.snsCfg.setSensorsCfg(CfgVals.BITS_ACEL, CfgVals.BITS_GYR, (byte) CfgVals.BITS_MAGNET, (byte) CfgVals.SCALE_ACC_4G,
                 (byte) CfgVals.GYR_SCALE_1000, CfgVals.BASE_PERIOD, CfgVals.PACKS_PER_INTERVAL);
-        bleTargets[device].getSensorDevice().snsCfg.createOrders();
+        bleTargets[device].sensorDevice.snsCfg.createOrders();
     }
 
     public void changeMAC(String newMAC) {

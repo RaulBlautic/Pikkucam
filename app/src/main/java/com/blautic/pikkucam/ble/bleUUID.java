@@ -1,38 +1,6 @@
 package com.blautic.pikkucam.ble;
 
 public class bleUUID {
-	// Aqui almacenamos todos los UUID programados para modificarlos de una manera sencilla
-	//public static final int UUID_ECG = 0;
-	//public final static String[] UUID_SERVICES = {"ff00"};
-
-    /*
-
-	#define CFG_MPU_LEN             7
-//[EnableSensors][PowerMgmt1][SampleRateDivider][AccelCfg][AccelCfg2][Config][GyroCfg]
-
-//EnableSensors (reg PowerManagement2): bit0:accel bit1:gyro bit2:magnet
-
-1: habilitado
-0: deshabilitado
-
-			#define CFG_MPU_SENSORSENABLED        0
-            #define CFG_MPU_POWERMGMT1            1
-            #define CFG_MPU_SAMPLERATE            2
-            #define CFG_MPU_ACCELCFG              3
-            #define CFG_MPU_ACCELCFG2             4
-            #define CFG_MPU_CONFIG                5
-            #define CFG_MPU_GYROCFG               6
-
-
-Sensores
-    Acel: bit2:z bit1:y bit0:x
-    Gyro: bit5:z bit4:y bit3:x
-    Magnet: bit6:completo
-
-    Trama por defecto: habilitados acelerómetro,giroscopio y magnetómetro
-            order = new byte[]{0x07F,0x00,0x00,0x08,0x03,0x03,0x10};
-*/
-
 
 	public final static String aux = "0000XXXX-0000-1000-8000-00805f9b34fb";
 
@@ -85,14 +53,13 @@ Sensores
 	public final static byte TAG_ID_LAB_BL5 = (byte) 0xBE;
 	public final static byte INT_FRAME_ID_SCORE_LAB_BL5 = 0x22;
 
+
 	// PIKKU ACADEMY
 	public final static byte INT_FRAME_ID_SCORE_PIKKU_ACADEMY= 0x55;
-
 
 	public final static byte INT_FRAME_ID_SCORE = 0x22;
 	public final static int POS_FRAME_ID = 6;
 	public final static int POS_VERSION = 7;
-
 
 	public final static int POS_TAG_GROUP = 9;
 	public final static int POS_TAG_MATCH = 12;
@@ -100,10 +67,6 @@ Sensores
 	public final static int POS_TAG_BTN1 = 17;
 	public final static int POS_TAG_BTN2 = 18;
 
-
 	public final static int TAM_BROADCAST = 20;
-
-
-    
 
 }

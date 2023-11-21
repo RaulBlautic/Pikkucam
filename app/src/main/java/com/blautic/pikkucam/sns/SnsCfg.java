@@ -43,7 +43,6 @@ public class SnsCfg {
 
 
     public SnsCfg() {
-
         createOrders();
     }
 

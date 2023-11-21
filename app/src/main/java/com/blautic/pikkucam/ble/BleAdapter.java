@@ -138,6 +138,7 @@ public class BleAdapter {
         return macAddress;
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private void checkIfTarget(String mac, byte[] scan) {
         if ((scan[bleUUID.POS_ID_DEVICE] == bleUUID.TAG_ID_DEVICE ||
                 scan[bleUUID.POS_ID_DEVICE] == bleUUID.TAG_ID_BL5) && (
