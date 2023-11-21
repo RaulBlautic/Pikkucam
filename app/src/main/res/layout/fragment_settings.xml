@@ -1,0 +1,1549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent_black"
+    tools:context=".ui.SettingsFragment">
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/activity_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="@string/configuracion_modos_sesion"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewBateria"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewConexion"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/recurso_conexion_0"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewBateria"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:layout_margin="5dp"
+        android:src="@drawable/recurso_bateria_0"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewConexion"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/long_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/up"
+        app:tint="@color/PIKKU_ORANGE"
+        app:layout_constraintStart_toEndOf="@id/imageViewConexion"
+        app:layout_constraintTop_toBottomOf="@id/imageViewConexion"
+        android:translationX="-16dp"
+        android:translationY="-21dp"
+        android:scaleY="0.8"
+        android:scaleX="0.8"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline5">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_siguiente"
+            android:visibility="gone"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/fondoboton"
+            android:fontFamily="@font/nunito_black"
+            android:text="Siguiente"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:backgroundTint="@color/PIKKU_ORANGE"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_Settings"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/button_Settings"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/back"
+            app:tint="@color/WHITE"
+            android:scaleX="1.23"
+            android:scaleY="1.23"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_Save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/button_Save"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/recurso_guardar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_Delete"
+            app:layout_constraintStart_toEndOf="@+id/button_Settings"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/button_Delete"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/recurso_eliminar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_Add"
+            app:layout_constraintStart_toEndOf="@+id/button_Save"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/button_Add"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:paddingStart="5dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/recurso_add_4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_Delete"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/recurso_40_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textViewVersion"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            style="@style/activity_text"
+            android:text="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.73" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="@+id/guideline8">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/long_range_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Device Supports Long Range"
+                android:textColor="@color/WHITE"
+                android:fontFamily="@font/nunito_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/firmware_version_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Firmware version: "
+                android:textColor="@color/WHITE"
+                android:fontFamily="@font/nunito_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/long_range_text"
+                android:layout_marginTop="5dp"/>
+
+            <ToggleButton
+                android:id="@+id/buttonSound"
+                style="@style/activity_text"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:button="@drawable/radio_button_alt"
+                android:buttonTint="@null"
+                android:gravity="start|center"
+                android:paddingStart="10dp"
+                android:textAllCaps="false"
+                android:textOff="@string/sonido"
+                android:textOn="@string/sonido"
+                app:layout_constraintBottom_toTopOf="@+id/buttonGreenScreen"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.444"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonSlowMotion" />
+
+            <ToggleButton
+                android:clickable="false"
+                android:visibility="invisible"
+                android:id="@+id/buttonMovements"
+                style="@style/activity_text"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:button="@drawable/radio_button_alt"
+                android:buttonTint="@null"
+                android:gravity="start|center"
+                android:paddingStart="10dp"
+                android:textAllCaps="false"
+                android:textOff="Long Range"
+                android:textOn="Long Range"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonGreenScreen" />
+
+            <ToggleButton
+                android:id="@+id/buttonSlowMotion"
+                style="@style/activity_text"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:button="@drawable/radio_button_alt"
+                android:buttonTint="@null"
+                android:gravity="start|center"
+                android:paddingStart="10dp"
+                android:textAllCaps="false"
+                android:textOff="@string/slowmotion"
+                android:textOn="@string/slowmotion"
+                app:layout_constraintBottom_toTopOf="@+id/buttonSound"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/firmware_version_text" />
+
+            <ToggleButton
+                android:id="@+id/buttonGreenScreen"
+                style="@style/activity_text"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:button="@drawable/radio_button_alt"
+                android:buttonTint="@null"
+                android:gravity="start|center"
+                android:paddingStart="10dp"
+                android:textAllCaps="false"
+                android:textOff="@string/pantalla_verde"
+                android:textOn="@string/pantalla_verde"
+                app:layout_constraintBottom_toTopOf="@+id/buttonMovements"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonSound" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:fillViewport="true"
+        android:fadeScrollbars="false"
+        android:scrollbarThumbVertical="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5_2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline8">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardviews_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toStartOf="@+id/guideline9_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline8">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline9_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.93" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_modo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/TRANSPARENT"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardview_camara"
+                app:layout_constraintEnd_toEndOf="@+id/guideline9_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                   including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardview_white"
+                    app:layout_constraintBottom_toBottomOf="@+id/base_cardview"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                                of the CardView. The elements
+                                that lie within the fixed portion of the CardView
+                                can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/button_cardview_modo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:textSize="20sp"
+                            android:text="@string/modo"
+                            android:textAllCaps="false"
+                            style="@style/activity_text_dark"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imagen_boton_modo"
+                            app:layout_constraintHorizontal_weight="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imagen_boton_modo"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="7dp"
+                            android:src="@drawable/cardview_abierto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="0.2"
+                            app:layout_constraintStart_toEndOf="@+id/button_cardview_modo"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout">
+
+                        <Spinner
+                            android:id="@+id/spinnerModo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/spinner_redondeado"
+                            android:popupBackground="@drawable/spinner_redondeado_selector"
+                            style="@style/activity_text_dark" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_camara"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/TRANSPARENT"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardview_calidad"
+                app:layout_constraintEnd_toEndOf="@+id/guideline9_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardview_modo">
+
+
+                <!--This is a ConstraintLayout for the entire CardView
+   including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardview_yellow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                                    of the CardView. The elements
+                                    that lie within the fixed portion of the CardView
+                                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout_camara"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/button_cardview_camara"
+                            style="@style/activity_text_dark"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:textSize="20sp"
+                            android:text="@string/camara"
+                            android:textAllCaps="false"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imagen_boton_camara"
+                            app:layout_constraintHorizontal_weight="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imagen_boton_camara"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="7dp"
+                            android:src="@drawable/cardview_abierto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="0.2"
+                            app:layout_constraintStart_toEndOf="@+id/button_cardview_camara"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view_camara"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout_camara">
+
+                        <RadioGroup
+                            android:id="@+id/radio_group_camara"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_camara_frontal"
+                                style="@style/activity_text_dark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="@string/frontal" />
+
+                            <RadioButton
+                                android:id="@+id/radio_button_camara_trasera"
+                                style="@style/activity_text_dark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text="@string/trasera" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_calidad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/TRANSPARENT"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardview_duracion"
+                app:layout_constraintEnd_toEndOf="@+id/guideline9_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardview_camara">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                   including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardview_yellow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                                    of the CardView. The elements
+                                    that lie within the fixed portion of the CardView
+                                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout_calidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/button_cardview_calidad"
+                            style="@style/activity_text_dark"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:textSize="20sp"
+                            android:text="@string/calidad"
+                            android:textAllCaps="false"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imagen_boton_calidad"
+                            app:layout_constraintHorizontal_weight="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imagen_boton_calidad"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="7dp"
+                            android:src="@drawable/cardview_abierto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="0.2"
+                            app:layout_constraintStart_toEndOf="@+id/button_cardview_calidad"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view_calidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout_calidad">
+
+                        <RadioGroup
+                            android:id="@+id/radio_group_calidad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp">
+
+                            <!--<RadioButton
+                                android:id="@+id/radio_button_calidad_maxima"
+                                style="@style/activity_text_dark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="@string/m_xima" />-->
+
+                            <RadioButton
+                                android:id="@+id/radio_button_calidad_alta"
+                                style="@style/activity_text_dark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="@string/alta" />
+
+                            <RadioButton
+                                android:id="@+id/radio_button_calidad_media"
+                                style="@style/activity_text_dark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text="@string/media" />
+
+                            <RadioButton
+                                android:id="@+id/radio_button_calidad_baja"
+                                style="@style/activity_text_dark"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text="@string/baja" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_duracion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/TRANSPARENT"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardview_multicamera"
+                app:layout_constraintEnd_toEndOf="@+id/guideline9_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardview_calidad">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                   including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardview_yellow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                                    of the CardView. The elements
+                                    that lie within the fixed portion of the CardView
+                                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout_duracion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/button_cardview_duracion"
+                            style="@style/activity_text_dark"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:textSize="20sp"
+                            android:text="@string/duracion"
+                            android:textAllCaps="false"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imagen_boton_duracion"
+                            app:layout_constraintHorizontal_weight="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imagen_boton_duracion"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="7dp"
+                            android:src="@drawable/cardview_abierto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="0.2"
+                            app:layout_constraintStart_toEndOf="@+id/button_cardview_duracion"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view_duracion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout_duracion">
+
+                        <TextView
+                            android:id="@+id/textViewSegundos"
+                            style="@style/activity_text_dark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="15dp"
+                            android:gravity="center"
+                            android:text="@string/duraciondp"
+                            android:textSize="20sp"
+                            app:layout_constraintHorizontal_weight="0.7" />
+
+                        <EditText
+                            android:id="@+id/editTextDuracion"
+                            style="@style/activity_text_dark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:ems="3"
+                            android:inputType="number"
+                            android:textSize="20sp"
+                            app:layout_constraintHorizontal_weight="0.3" />
+
+                        <TextView
+                            android:id="@+id/textViewSigla"
+                            style="@style/activity_text_dark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="@string/sigla_tiempo"
+                            android:textSize="20sp"
+                            app:layout_constraintHorizontal_weight="0.7" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_multicamera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/TRANSPARENT"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardview_subtitulos"
+                app:layout_constraintEnd_toEndOf="@+id/guideline9_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardview_duracion">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                   including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardview_yellow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                                    of the CardView. The elements
+                                    that lie within the fixed portion of the CardView
+                                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout_multicamera"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/button_cardview_multicamera"
+                            style="@style/activity_text_dark"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:textSize="20sp"
+                            android:text="@string/enable_pikku_buttons"
+                            android:textAllCaps="false"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imagen_boton_multicamera"
+                            app:layout_constraintHorizontal_weight="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imagen_boton_multicamera"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="7dp"
+                            android:src="@drawable/cardview_abierto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="0.2"
+                            app:layout_constraintStart_toEndOf="@+id/button_cardview_multicamera"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view_multicamera"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout_multicamera">
+
+                        <CheckBox
+                            android:id="@+id/radio_button_blue"
+                            style="@style/activity_text_dark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/button_blue"/>
+
+                        <CheckBox
+                            android:id="@+id/radio_button_red"
+                            style="@style/activity_text_dark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="@string/button_red"/>
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_subtitulos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/TRANSPARENT"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@id/cardview_drive"
+                app:layout_constraintEnd_toEndOf="@+id/guideline9_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardview_multicamera">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                   including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardview_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                                    of the CardView. The elements
+                                    that lie within the fixed portion of the CardView
+                                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout_subtitulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/button_cardview_subtitulo"
+                            style="@style/activity_text"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:textSize="20sp"
+                            android:text="@string/subtitulos"
+                            android:textAllCaps="false"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imagen_boton_subtitulo"
+                            app:layout_constraintHorizontal_weight="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/buttons"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintEnd_toStartOf="@id/imagen_boton_subtitulo"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:text="@string/two_buttons"
+                            android:textColor="@color/WHITE"/>
+
+
+                        <ImageView
+                            android:id="@+id/imagen_boton_subtitulo"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="7dp"
+                            android:src="@drawable/cardview_abierto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="0.2"
+                            app:layout_constraintStart_toEndOf="@+id/button_cardview_subtitulo"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/hidden_cardview_subtitulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:cardBackgroundColor="@color/TRANSPARENT"
+                        app:cardElevation="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout_subtitulo">
+
+                        <!--This is a ConstraintLayout for the entire CardView
+                   including the expandable portion-->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <!--This is a ConstraintLayout for the fixed portion
+                                                of the CardView. The elements
+                                                that lie within the fixed portion of the CardView
+                                                can be constrained to this layout.-->
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/fixed_sublayout_subtitulo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.0">
+
+                                <RadioGroup
+                                    android:id="@+id/radio_group_subtitulo"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+
+                                    <RadioButton
+                                        android:id="@+id/radio_button_subtitulo_desactivado"
+                                        style="@style/activity_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="true"
+                                        android:text="@string/desactivado" />
+
+                                    <RadioButton
+                                        android:id="@+id/radio_button_subtitulo_activado1"
+                                        style="@style/activity_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="false"
+                                        android:text="@string/activado1" />
+
+                                    <RadioButton
+                                        android:id="@+id/radio_button_subtitulo_activado4"
+                                        style="@style/activity_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="false"
+                                        android:text="@string/activado4" />
+
+
+                                </RadioGroup>
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                            <!--The following is the expandable portion whose
+                                visibility is initially set to 'gone'.
+                                The parent LinearLayout contains 3 child LinearLayouts
+                                that hold a subject name and an icon each.-->
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/hidden_view_subtitulo1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:orientation="vertical"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/fixed_sublayout_subtitulo">
+
+                                <TextView
+                                    android:id="@+id/textview_subtitle_input"
+                                    style="@style/activity_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/subtitulo"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/edit_text_subtitle"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <EditText
+                                    android:id="@+id/edit_text_subtitle"
+                                    style="@style/activity_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:text="@string/subtitulo_default"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/textview_subtitle_input"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/hidden_view_subtitulo4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="10dp"
+                                android:orientation="vertical"
+                                android:visibility="gone"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/fixed_sublayout_subtitulo">
+
+                                <TextView
+                                    android:id="@+id/textview_subtitle_input1_short"
+                                    style="@style/activity_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/subtitulo1_short"
+                                    app:layout_constraintBottom_toTopOf="@+id/textview_subtitle_input1_long"
+                                    app:layout_constraintEnd_toStartOf="@+id/edit_text_subtitle1_short"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <EditText
+                                    android:id="@+id/edit_text_subtitle1_short"
+                                    style="@style/activity_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/subtitulo1_short_default"
+                                    app:layout_constraintBottom_toBottomOf="@+id/textview_subtitle_input1_short"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/textview_subtitle_input1_short"
+                                    app:layout_constraintTop_toTopOf="@+id/textview_subtitle_input1_short" />
+
+                                <TextView
+                                    android:id="@+id/textview_subtitle_input1_long"
+                                    style="@style/activity_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/subtitulo1_long"
+                                    app:layout_constraintBottom_toTopOf="@+id/textview_subtitle_input2_short"
+                                    app:layout_constraintEnd_toStartOf="@+id/edit_text_subtitle1_long"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textview_subtitle_input1_short" />
+
+                                <EditText
+                                    android:id="@+id/edit_text_subtitle1_long"
+                                    style="@style/activity_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:text="@string/subtitulo1_long_default"
+                                    app:layout_constraintBottom_toBottomOf="@+id/textview_subtitle_input1_long"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/textview_subtitle_input1_long"
+                                    app:layout_constraintTop_toTopOf="@+id/textview_subtitle_input1_long" />
+
+                                <TextView
+                                    android:id="@+id/textview_subtitle_input2_short"
+                                    style="@style/activity_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/subtitulo2_short"
+                                    app:layout_constraintBottom_toTopOf="@+id/textview_subtitle_input2_long"
+                                    app:layout_constraintEnd_toStartOf="@+id/edit_text_subtitle2_short"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textview_subtitle_input1_long" />
+
+                                <EditText
+                                    android:id="@+id/edit_text_subtitle2_short"
+                                    style="@style/activity_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:text="@string/subtitulo2_short_default"
+                                    app:layout_constraintBottom_toBottomOf="@+id/textview_subtitle_input2_short"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/textview_subtitle_input2_short"
+                                    app:layout_constraintTop_toTopOf="@+id/textview_subtitle_input2_short" />
+
+                                <TextView
+                                    android:id="@+id/textview_subtitle_input2_long"
+                                    style="@style/activity_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/subtitulo2_long"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/edit_text_subtitle2_long"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/textview_subtitle_input2_short" />
+
+                                <EditText
+                                    android:id="@+id/edit_text_subtitle2_long"
+                                    style="@style/activity_text"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:text="@string/subtitulo2_long_default"
+                                    app:layout_constraintBottom_toBottomOf="@+id/textview_subtitle_input2_long"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/textview_subtitle_input2_long"
+                                    app:layout_constraintTop_toTopOf="@+id/textview_subtitle_input2_long" />
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_drive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/TRANSPARENT"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardview_publicidad"
+                app:layout_constraintEnd_toEndOf="@+id/guideline9_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardview_subtitulos">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                   including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardview_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                                    of the CardView. The elements
+                                    that lie within the fixed portion of the CardView
+                                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout_drive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/button_cardview_drive"
+                            style="@style/activity_text"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:textSize="20sp"
+                            android:text="@string/guardado_drive"
+                            android:textAllCaps="false"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imagen_boton_drive"
+                            app:layout_constraintHorizontal_weight="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imagen_boton_drive"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="7dp"
+                            android:src="@drawable/cardview_abierto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="0.2"
+                            app:layout_constraintStart_toEndOf="@+id/button_cardview_drive"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view_drive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout_drive">
+
+                        <RadioGroup
+                            android:id="@+id/radio_group_drive"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_drive_activado"
+                                style="@style/activity_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/WHITE"
+                                android:checked="false"
+                                android:text="@string/activado" />
+
+                            <RadioButton
+                                android:id="@+id/radio_button_drive_desactivado"
+                                style="@style/activity_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:buttonTint="@color/WHITE"
+                                android:checked="true"
+                                android:text="@string/desactivado" />
+
+                        </RadioGroup>
+
+                        <com.google.android.gms.common.SignInButton
+                            android:id="@+id/button_google_account"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/introducir_cuenta_google" />
+
+                        <TextView
+                            android:id="@+id/textview_confirmacion_cuenta"
+                            style="@style/activity_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="@string/cuenta_no_introducida" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_publicidad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/TRANSPARENT"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/guideline9_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardview_drive">
+
+                <!--This is a ConstraintLayout for the entire CardView
+                   including the expandable portion-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cardview_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!--This is a ConstraintLayout for the fixed portion
+                                    of the CardView. The elements
+                                    that lie within the fixed portion of the CardView
+                                    can be constrained to this layout.-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fixed_layout_publicidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <TextView
+                            android:id="@+id/button_cardview_publicidad"
+                            style="@style/activity_text"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:padding="5dp"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:textSize="20sp"
+                            android:text="@string/publicidad"
+                            android:textAllCaps="false"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/imagen_boton_publicidad"
+                            app:layout_constraintHorizontal_weight="0.8"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imagen_boton_publicidad"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="7dp"
+                            android:src="@drawable/cardview_abierto"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_weight="0.2"
+                            app:layout_constraintStart_toEndOf="@+id/button_cardview_publicidad"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <!--The following is the expandable portion whose
+                    visibility is initially set to 'gone'.
+                    The parent LinearLayout contains 3 child LinearLayouts
+                    that hold a subject name and an icon each.-->
+                    <LinearLayout
+                        android:id="@+id/hidden_view_publicidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fixed_layout_publicidad">
+
+                        <RadioGroup
+                            android:id="@+id/radio_group_publicidad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp">
+
+                            <RadioButton
+                                android:id="@+id/radio_button_publicidad_activado"
+                                style="@style/activity_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text="@string/activado" />
+
+                            <RadioButton
+                                android:id="@+id/radio_button_publicidad_desactivado"
+                                style="@style/activity_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:text="@string/desactivado" />
+
+                        </RadioGroup>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp">
+
+                            <ImageView
+                                android:id="@+id/buttonSelectAdvert"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
+                                android:src="@drawable/recurso_add"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toStartOf="@+id/imageViewSelectAdvert"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/imageViewSelectAdvert"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/buttonSelectAdvert"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

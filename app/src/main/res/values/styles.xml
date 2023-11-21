@@ -1,0 +1,81 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorBackground">@color/TRANSPARENT</item>
+        <item name="android:background">@color/TRANSPARENT</item>
+
+        <item name="android:windowContentTransitions">true</item>
+        <!-- enable overlap of transitions -->
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+    </style>
+
+    <style name="activity_title" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="activity_title_dark" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="RoundedTextInputLayout" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+        <item name="android:textColor">@color/WHITE</item>
+    </style>
+
+    <style name="AppTheme.InputLayoutStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="fontFamily">@font/nunito_bold</item>
+    </style>
+
+
+    <style name="activity_text" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/nunito</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">@color/WHITE</item>
+        <item name="android:buttonTint">@color/WHITE</item>
+    </style>
+
+    <style name="activity_text_bold" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/nunito</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColorHint">@color/WHITE</item>
+        <item name="android:buttonTint">@color/WHITE</item>
+    </style>
+
+    <style name="activity_text_dark" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/nunito</item>
+        <item name="android:textColor">@color/BLACK</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">@color/BLACK</item>
+        <item name="android:buttonTint">@color/BLACK</item>
+    </style>
+
+    <style name="activity_text_dark_bold" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/nunito</item>
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColorHint">@color/WHITE</item>
+        <item name="android:buttonTint">@color/WHITE</item>
+    </style>
+
+    <style name="SeekBarColor" parent="AppTheme">
+        <item name="android:progressBackgroundTint">@color/WHITE</item>
+        <item name="android:progressTint">@color/WHITE</item>
+        <item name="android:thumbTint">@color/WHITE</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202020"
+    android:orientation="horizontal"
+    tools:context=".ui.galery.GalleryFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_sessions_vertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.80" />
+
+    <LinearLayout
+        android:gravity="end"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:id="@+id/select_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline_sessions_vertical2"
+        android:orientation="horizontal">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:id="@+id/text_input_layout"
+            android:padding="0dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Filtra por subtitulo"
+            android:layout_weight="1"
+            app:boxStrokeColor="@color/PIKKU_ORANGE"
+            app:hintTextColor="@color/WHITE"
+            android:textSize="10sp"
+            android:textColorHint="@color/WHITE"
+            app:boxBackgroundColor="#1E1E1E"
+            android:layout_marginEnd="10dp"
+            android:gravity="center">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_input_edit_text"
+                android:layout_width="match_parent"
+                android:padding="0dp"
+                android:layout_height="35dp"
+                android:textColor="@color/WHITE"
+                android:inputType="textEmailAddress"
+                android:textSize="14sp"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:imeOptions="actionDone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            app:cardCornerRadius="20dp">
+            <CheckBox
+                android:layout_gravity="center"
+                android:fontFamily="@font/nunito_bold"
+                android:id="@+id/select_all_videos"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginStart="5dp"
+                android:elevation="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Seleccionar todos"
+                android:textSize="12sp"
+                android:buttonTint="@color/PIKKU_ORANGE"
+                android:textColor="@color/BLACK"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <!--LAYOUT VIDEOS GRID-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline_sessions_vertical2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/select_layout">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:src="@drawable/filter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:elevation="30dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:background="@drawable/button_shape_circular"
+                android:backgroundTint="@color/WHITE"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="10dp"
+                android:gravity="center"
+                android:elevation="10dp"
+                android:visibility="gone"
+                android:id="@+id/linear_layout_filtername_videos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/linearLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible">
+
+                <TextView
+                    android:fontFamily="@font/nunito_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="filtrado por: "
+                    android:textColor="@color/BLACK"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:fontFamily="@font/nunito_bold"
+                    android:id="@+id/video_filtername_selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/BLACK"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_marginStart="5dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_cancel"
+                    app:tint="@color/PIKKU_RED"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="10dp"
+                android:background="@drawable/button_shape_circular"
+                android:backgroundTint="@color/WHITE"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="10dp"
+                android:gravity="center"
+                android:elevation="10dp"
+                android:visibility="invisible"
+                android:id="@+id/linear_layout_count_videos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/linearLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:visibility="visible">
+
+                <TextView
+                    android:fontFamily="@font/nunito_bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Seleccionados: "
+                    android:textColor="@color/BLACK"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:fontFamily="@font/nunito_bold"
+                    android:id="@+id/video_count_selected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/BLACK"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_marginStart="5dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_cancel"
+                    app:tint="@color/PIKKU_RED"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_shape_circular"
+            android:elevation="10dp"
+            android:gravity="center"
+            android:padding="7dp"
+            android:weightSum="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/buttonPlay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/play"
+                app:tint="@color/WHITE" />
+
+            <ImageView
+                android:id="@+id/buttonDelete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/delete"
+                app:tint="@color/WHITE" />
+
+            <ImageView
+                android:id="@+id/buttonShare"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/share"
+                app:tint="@color/WHITE" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:elevation="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:itemCount="10"
+            tools:listitem="@layout/list_item_session" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--LAYOUT VIDEOS INFO-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#373737"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline_sessions_vertical2"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:isScrollContainer="true"
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="9dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Información Video"
+                    android:textColor="@color/WHITE"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:text="@string/subtitulo"
+                    android:textColor="@color/PIKKU_ORANGE"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/subtittle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="subtitulo del clip seleccionado"
+                    android:textColor="@color/WHITE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/perfil"
+                    android:textColor="@color/PIKKU_ORANGE"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/perfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre del perfil"
+                    android:textColor="@color/WHITE"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/fecha_hora"
+                    android:textColor="@color/PIKKU_ORANGE"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fecha y hora"
+                    android:textColor="@color/WHITE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/duracion"
+                    android:textColor="@color/PIKKU_ORANGE"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Duración del video"
+                    android:textColor="@color/WHITE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/calidad"
+                    android:textColor="@color/PIKKU_ORANGE"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/quality"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Calidad del video"
+                    android:textColor="@color/WHITE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/slowmotion"
+                    android:textColor="@color/PIKKU_ORANGE"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/slowmotion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Activado"
+                    android:textColor="@color/WHITE"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/ruta"
+                    android:textColor="@color/PIKKU_ORANGE"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/path"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Movies/Pikkucam/"
+                    android:textColor="@color/WHITE"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_margin="16dp"
+                    android:id="@+id/imageViewLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:src="@drawable/recurso_39_2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

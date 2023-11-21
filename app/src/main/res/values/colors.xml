@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="WHITE">#FFFFFF</color>
+    <color name="WHITE_TR">#55eeeeee</color>
+    <color name="GRAY_TR">#66222222</color>
+    <color name="PIKKU_BLUE">#009FDF</color>
+    <color name="TRANSPARENT">#00000000</color>
+    <color name="PIKKU_DARKBLUE">#004976</color>
+    <color name="PIKKU_VERYDARKBLUE">#023d63</color>
+    <color name="PIKKU_MAGENTA">#D40F7D</color>
+    <color name="PIKKU_GREEN">#0ec200</color>
+    <color name="PIKKU_GREEN_LIGHT">#910EC200</color>
+    <color name="PIKKU_LIGHTGRAY">#edefee</color>
+    <color name="PIKKU_SCORE_DARK">#000000</color>
+    <color name="PIKKU_SCORE_DISC">#c4c5c5</color>
+    <color name="PIKKU_SCORE_LIGHT">#fffc00</color>
+    <color name="PIKKU_DARKGRAY">#32303a</color>
+    <color name="PIKKU_GRAY">#c4c5c5</color>
+    <color name="FORM_BAR">#97cadf</color>
+    <color name="FORM_EDIT">#c9ff00</color>
+    <color name="PIKKU_ORANGE">#efc217</color>
+    <color name="PIKKU_ORANGE_LIGTH">#A3EFC217</color>
+    <color name="PIKKU_RED">#ff0000</color>
+    <color name="PIKKU_RED_LIGTH">#92FF0000</color>
+    <color name="PIKKU_LIGHTBLUE">#00b9df</color>
+    <color name="PIKKU_WARNING">#FFA500</color>
+    <color name="seekbar_background">#80000000</color>
+    <color name="transparent_grey">#80808080</color>
+    <color name="transparent_black">#AA000000</color>
+    <color name="login_black">#CC121212</color>
+    <color name="login_textField">#232428</color>
+    <color name="spinner_background">#FF808080</color>
+    <color name="button_yellow">#D9E021</color>
+    <color name="BLACK">#000000</color>
+    <color name="PINK">#FF69B4</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color">#232428</color>
+
+    <color name="pikkutheme_color">#115e90</color>
+
+</resources>

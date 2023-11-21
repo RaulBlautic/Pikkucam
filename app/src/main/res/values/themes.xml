@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MainActivity" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/pikkutheme_color</item>
+        <item name="colorPrimaryVariant">@color/PIKKU_DARKBLUE</item>
+        <item name="colorOnPrimary">@color/PIKKU_BLUE</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/WHITE</item>
+        <item name="colorSecondaryVariant">@color/PIKKU_ORANGE</item>
+        <item name="colorOnSecondary">@color/PIKKU_RED</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/list_selector</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.MainActivity.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="Widget.App.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TextInputLayout</item>
+        <item name="boxCornerRadiusBottomEnd">15dp</item>
+        <item name="boxCornerRadiusBottomStart">15dp</item>
+        <item name="boxCornerRadiusTopEnd">15dp</item>
+        <item name="boxCornerRadiusTopStart">15dp</item>
+        <item name="boxBackgroundColor">@color/WHITE</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TextInputLayout" parent="">
+        <item name="colorPrimary">@color/PIKKU_ORANGE</item>
+    </style>
+
+
+    <style name="Theme.MainActivity.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MainActivity.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

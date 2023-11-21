@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_black"
+    tools:context=".ui.configactivity.LoginActivityFragment">
+
+    <ImageButton
+        android:id="@+id/logout_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logout"
+        android:backgroundTint="@color/TRANSPARENT"
+        app:tint="@color/WHITE"/>
+
+    <LinearLayout
+        tools:visibility="invisible"
+        android:id="@+id/user_logged"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="40dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Bienvenido de nuevo"
+            android:textAlignment="center"
+            android:textColor="@color/WHITE"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Javier Soriano"
+            android:textAlignment="center"
+            android:textColor="@color/WHITE"
+            android:textSize="50sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continue_button"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/nunito_black"
+                android:text="Mis actividades"
+                android:textColor="@color/login_textField"
+                android:textSize="15sp"
+                app:backgroundTint="@color/button_yellow"
+                app:cornerRadius="13dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        tools:visibility="visible"
+        android:id="@+id/user_unLogged"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="40dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start|center">
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Inicia de Sesión con tu cuenta de Blautic"
+            android:textColor="@color/WHITE"
+            android:textSize="24sp" />
+
+            <ImageView
+                android:layout_marginStart="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/blautic" />
+
+            <ImageView
+                android:layout_marginStart="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/mm" />
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:hint="Email"
+            app:hintTextColor="@color/button_yellow"
+            app:boxStrokeColor="@color/button_yellow"
+            app:boxStrokeWidth="2dp"
+            app:boxBackgroundMode="outline"
+            android:textColorHint="@color/PIKKU_GRAY"
+            app:boxBackgroundColor="@color/login_textField"
+            app:boxCornerRadiusBottomEnd="13dp"
+            app:boxCornerRadiusBottomStart="13dp"
+            app:boxCornerRadiusTopEnd="13dp"
+            app:boxCornerRadiusTopStart="13dp"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/email"
+            app:endIconTint="@color/PIKKU_GRAY">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailTextFieldInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="text"
+                android:textColor="@color/WHITE"
+                android:textColorHint="@color/WHITE"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:hint="Contraseña"
+            app:hintTextColor="@color/button_yellow"
+            app:boxStrokeColor="@color/button_yellow"
+            app:boxStrokeWidth="2dp"
+            app:boxBackgroundMode="outline"
+            android:textColorHint="@color/PIKKU_GRAY"
+            app:boxBackgroundColor="@color/login_textField"
+            app:boxCornerRadiusBottomEnd="13dp"
+            app:boxCornerRadiusBottomStart="13dp"
+            app:boxCornerRadiusTopEnd="13dp"
+            app:boxCornerRadiusTopStart="13dp"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/lock"
+            app:endIconTint="@color/PIKKU_GRAY">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordTextFieldInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="textPassword"
+                android:textColor="@color/WHITE"
+                android:textColorHint="@color/WHITE"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="or"
+            android:textAlignment="center"
+            android:textColor="@color/WHITE"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/google" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/nunito_black"
+            android:text="Iniciar Sesión"
+            android:textColor="@color/login_textField"
+            android:textSize="15sp"
+            app:backgroundTint="@color/button_yellow"
+            app:cornerRadius="13dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

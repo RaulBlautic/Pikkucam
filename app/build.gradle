@@ -1,0 +1,139 @@
+plugins {
+    id 'com.android.application'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+
+    signingConfigs {
+       /* debug {
+            storeFile file('/home/raulpiqueras/AndroidStudioProjects/PikkuCam_KeyStore.jks')
+            storePassword 'PikkuCam_Blautic123'
+            keyPassword 'PikkuCam_Blautic123'
+            keyAlias 'PikkuCamKey'
+        }*/
+    }
+
+    packagingOptions {}
+
+    compileSdkVersion 33
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.blautic.pikkucam"
+        minSdkVersion 26
+        targetSdkVersion 33
+        versionCode 73
+        versionName "2.4.8y"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+}
+
+dependencies {
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.3.2")
+    implementation("com.google.firebase:firebase-ml-modeldownloader-ktx:24.1.2")
+
+    //Tensor flow
+    implementation("org.tensorflow:tensorflow-lite:2.12.0")
+    implementation("org.tensorflow:tensorflow-lite-gpu:2.12.0")
+    implementation("org.tensorflow:tensorflow-lite-gpu-api:2.12.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.3")
+
+    // Soporte para trabajar con navegación
+    implementation "androidx.navigation:navigation-compose:2.4.0"
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-crashlytics:18.3.2'
+    implementation 'com.google.firebase:firebase-analytics:21.2.0'
+    apply plugin: 'androidx.navigation.safeargs'
+    implementation 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.0'
+    implementation "androidx.cardview:cardview:1.0.0"
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation 'com.googlecode.mp4parser:isoparser:1.1.20'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
+    implementation 'com.google.http-client:google-http-client-gson:1.28.0'
+    implementation('com.google.api-client:google-api-client-android:1.26.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation('com.google.apis:google-api-services-drive:v3-rev136-1.25.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+
+    implementation 'androidx.navigation:navigation-fragment:2.4.1'
+    implementation 'androidx.navigation:navigation-ui:2.4.1'
+
+    implementation 'com.webianks.library:scroll-choice:1.0.1'
+
+    implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly'
+    // The GPU delegate library is optional. Depend on it as needed.
+    implementation 'org.tensorflow:tensorflow-lite-gpu:0.0.0-nightly'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.0.0-nightly'
+
+    implementation 'com.github.blautic:cameraxlib:1.0'
+
+    //WindowManager
+    implementation 'androidx.window:window:1.1.0-alpha02'
+
+    def retrofit= "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    //CHARTS
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
+    implementation 'com.google.dagger:hilt-android:2.36'
+    annotationProcessor 'com.google.dagger:hilt-compiler:2.36'
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
+    implementation "androidx.fragment:fragment-ktx:1.3.6"
+
+    implementation "com.opencsv:opencsv:5.3"
+
+    //implementation 'com.arthenica:mobile-ffmpeg-full:1.2'
+    implementation 'com.arthenica:ffmpeg-kit-full:4.4.LTS'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+    repositories{
+        flatDir{
+            dirs 'libs'
+        }
+    }
+}

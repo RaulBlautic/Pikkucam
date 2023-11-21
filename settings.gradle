@@ -1,0 +1,4 @@
+include ':all-fmmr'
+include ':all-fmmr'
+include ':app'
+rootProject.name = "Pikkucam"

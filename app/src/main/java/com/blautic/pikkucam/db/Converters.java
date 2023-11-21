@@ -1,0 +1,20 @@
+package com.blautic.pikkucam.db;
+
+import androidx.room.TypeConverter;
+
+import java.util.Date;
+
+/*
+Conversores de tipos de datos a tipos de datos almacenables por la db
+ */
+public class Converters {
+    @TypeConverter
+    public static Date fromTimestamp(Long value) {
+        return value == null ? null : new Date(value);
+    }
+
+    @TypeConverter
+    public static Long dateToTimestamp(Date date) {
+        return date == null ? null : date.getTime();
+    }
+}

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#202020"
+    android:orientation="horizontal"
+    tools:context=".ui.SessionsFragment">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_sessions_horizontal1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_sessions_horizontal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.125" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_sessions_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="622dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_sessions_vertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.83" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_sessions_horizontal1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_sessions_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editTextSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/edit_text_redondeado"
+            android:ems="10"
+            android:hint="@string/titulo_sesion"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            style="@style/activity_text"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="0.5" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSubtitle"
+            app:layout_constraintVertical_weight="0.5">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSearchVideoSession"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/cardview_white"
+                android:drawableStart="@drawable/recurso_buscar"
+                android:text="@string/buscar"
+                style="@style/activity_text_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageViewBateria"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:adjustViewBounds="true"
+        android:orientation="vertical"
+        android:src="@drawable/recurso_bateria_0"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_sessions_horizontal2"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewConexion"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewConexion"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_marginEnd="5dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/recurso_conexion_0"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_sessions_horizontal2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_sessions_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_sessions_horizontal2">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/subtitulo"
+            android:textColor="@color/button_yellow"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvVideoTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvVideoTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Este es el subtitulo del clip seleccionado"
+            style="@style/activity_text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/layout_options"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <LinearLayout
+            android:gravity="center"
+            android:id="@+id/layout_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tvVideoTitle"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/buttonPlaySessions"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/recurso_play"
+                app:layout_constraintBottom_toTopOf="@+id/textView4"
+                app:layout_constraintEnd_toStartOf="@+id/buttonDeleteSessions"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvVideoTitle" />
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:id="@+id/buttonDeleteSessions"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/recurso_eliminar"
+                app:layout_constraintBottom_toTopOf="@+id/textView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonPlaySessions"
+                app:layout_constraintTop_toBottomOf="@+id/tvVideoTitle" />
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="0dp"/>
+
+
+            <ImageButton
+                android:id="@+id/buttonOpenFileExplorer"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/storage"
+                app:tint="#202020"
+                android:background="@drawable/button_shape_circular"
+                android:backgroundTint="@color/WHITE"
+                app:layout_constraintBottom_toTopOf="@+id/textView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonDeleteSessions"
+                app:layout_constraintTop_toBottomOf="@+id/tvVideoTitle" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/perfil"
+            android:textColor="@color/button_yellow"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvVideoProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_options" />
+
+        <TextView
+            android:id="@+id/tvVideoProfile"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Nombre del perfil"
+            style="@style/activity_text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/calidad2"
+            android:textColor="@color/button_yellow"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvVideoQuality"
+            app:layout_constraintEnd_toStartOf="@+id/textViewSlowmoTitulo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvVideoProfile" />
+
+        <TextView
+            android:id="@+id/textViewSlowmoTitulo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/slowmotion"
+            android:textColor="@color/button_yellow"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvVideoQuality"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/tvVideoProfile" />
+
+        <TextView
+            android:id="@+id/tvVideoQuality"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Alta"
+            style="@style/activity_text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView8"
+            app:layout_constraintEnd_toStartOf="@+id/tvVideoSlowmo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/tvVideoSlowmo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="Desactivado"
+            style="@style/activity_text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvVideoQuality"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/fecha_hora"
+            android:textColor="@color/button_yellow"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvVideoFecha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvVideoQuality" />
+
+        <TextView
+            android:id="@+id/tvVideoFecha"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="24/10/1975"
+            style="@style/activity_text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewDuracionTitulo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/textViewDuracionTitulo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/duracion"
+            android:textColor="@color/button_yellow"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/tvVideoDuration"
+            app:layout_constraintEnd_toStartOf="@id/imageViewLogo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvVideoFecha" />
+
+
+        <TextView
+            android:id="@+id/tvVideoDuration"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="1´36´´"
+            style="@style/activity_text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/imageViewLogo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDuracionTitulo" />
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/recurso_39_2"
+            app:layout_constraintTop_toBottomOf="@id/tvVideoFecha"
+            app:layout_constraintStart_toEndOf="@id/textViewDuracionTitulo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_siguiente_galeria"
+        android:visibility="visible"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:background="@drawable/fondoboton"
+        android:fontFamily="@font/nunito_black"
+        android:text="Siguiente"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:backgroundTint="@color/PIKKU_ORANGE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_margin="10dp"/>
+
+    <GridView
+        android:elevation="-1dp"
+        android:id="@+id/gridView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:numColumns="3"
+        android:layout_margin="10dp"
+        android:listSelector="@drawable/list_selector"
+        android:choiceMode="singleChoice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_sessions_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_sessions_horizontal1" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

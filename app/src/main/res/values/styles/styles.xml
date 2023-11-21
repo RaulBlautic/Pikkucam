@@ -1,0 +1,429 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorBackground">@color/TRANSPARENT</item>
+        <item name="android:windowContentTransitions">true</item>
+        <!-- enable overlap of transitions -->
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
+        <item name="android:windowAllowReturnTransitionOverlap">true</item>
+    </style>
+
+    <style name="RadioButtonPikkuTheme" >
+        <item name="android:button">@drawable/pikkutheme_btn_radio_holo_dark</item>
+        <item name="android:textColor">@color/PIKKU_LIGHTGRAY</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:backgroundTint">@color/FORM_EDIT</item>
+    </style>
+
+    <style name="activity_title" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="activity_title_dark" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="bar_action" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+
+    <style name="activity_title_big" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="screen_title_big" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">140sp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+
+    <style name="bk_dark" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@drawable/shape_blue_darkblue</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">0dp</item>
+
+    </style>
+    <!-- GROUPS      **************************  -->
+
+    <style name="group" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:background">@drawable/shape_group</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+    </style>
+
+    <style name="group_light" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:background">@drawable/shape_group_light</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+    </style>
+
+    <style name="group_btn1" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+
+        <item name="android:background">@drawable/shape_group_btn1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="group_btn2" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:background">@drawable/shape_group_btn2</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+
+    <style name="bar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@drawable/shape_bar</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">10dp</item>
+
+    </style>
+
+    <style name="bar_light" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@drawable/shape_bar_light</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">0dp</item>
+
+    </style>
+
+    <!-- FORMS      **************************  -->
+
+    <style name="form" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@drawable/shape_form</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_margin">5dp</item>
+
+    </style>
+
+    <style name="form_separator" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@color/FORM_BAR</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
+
+    <style name="form_warning_txt" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_ORANGE</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <style name="form_light_small" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/FORM_BAR</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <style name="form_light_med0" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/FORM_BAR</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="form_light_med" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_LIGHTGRAY</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+
+
+    <style name="form_dark_med" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="form_color_med" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/FORM_EDIT</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="form_light_big" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="form_dark_big" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+
+    <style name="form_spinner_txt" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/FORM_EDIT</item>
+
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="form_spinner" >
+        <item name="android:background">@drawable/pikkutheme_spinner_background_holo_dark</item>
+        <item name="android:dropDownSelector">@drawable/pikkutheme_list_selector_holo_dark</item>
+        <item name="android:popupBackground">@color/PIKKU_DARKBLUE</item>
+        <item name="android:popupElevation">20dp</item>
+        <item name="android:overlapAnchor">false</item>
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="form_rb" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_LIGHTGRAY</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:buttonTint">@color/FORM_EDIT</item>
+    </style>
+
+    <style name="form_checkbox">
+        <item name="colorAccent">@color/WHITE</item>
+        <item name="android:buttonTint">@color/FORM_EDIT</item>
+        <item name="color">@color/WHITE</item>
+    </style>
+
+    <!-- ICONS      **************************  -->
+    <style name="icon" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@drawable/shape_icon</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="icon_w" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@drawable/shape_icon_w</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="icon_txt_large" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="icon_txt_large_w" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_LIGHTGRAY</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="icon_dark_bg" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@drawable/shape_icon_on_dark</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">5dp</item>
+
+    </style>
+
+    <style name="icon_selectable">
+
+        <item name="android:background">@drawable/selector_square</item>
+        <item name="android:layout_margin">2dp</item>
+
+    </style>
+
+    <style name="icon_btn1">
+
+        <item name="android:background">@drawable/shape_btn1</item>
+        <item name="android:layout_margin">1dp</item>
+
+    </style>
+
+    <style name="icon_btn2">
+
+        <item name="android:background">@drawable/shape_btn2</item>
+        <item name="android:layout_margin">1dp</item>
+
+    </style>
+
+    <!-- LISTS      **************************  -->
+    <style name="list_item_txt" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <!-- SCORE      **************************  -->
+
+    <style name="score_light_small" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_ORANGE</item>
+        <item name="android:textSize">60sp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <style name="score_light_big" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_ORANGE</item>
+        <item name="android:textSize">180sp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <style name="coachval_light_med" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_ORANGE</item>
+        <item name="android:textSize">56sp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <style name="score_color_small" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/FORM_EDIT</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="score_color_big" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/FORM_EDIT</item>
+        <item name="android:textSize">280sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="score_time" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_SCORE_LIGHT</item>
+        <item name="android:textSize">@dimen/score_time_size_onedigit</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="setnumber" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_DARKBLUE</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="teamname" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="setresult" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_SCORE_DARK</item>
+        <item name="android:textSize">@dimen/score_set_size_onedigit</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="gameresult" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_SCORE_LIGHT</item>
+        <item name="android:textSize">@dimen/score_game_size_onedigit</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="score_coach_big" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_ORANGE</item>
+        <item name="android:textSize">220sp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <style name="coach_warning" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">260sp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <!-- DIALOGS      **************************  -->
+    <style name="dialog" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_BLUE</item>
+        <item name="android:background">@drawable/shape_dialog</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
+    <style name="dialog_service" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/PIKKU_BLUE</item>
+        <item name="android:background">@drawable/shape_dialog</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+
+    <style name="background_coloured" parent="@android:style/TextAppearance.Medium">
+        <item name="android:background">@drawable/shape_background_bicolor</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">1dp</item>
+
+    </style>
+
+    <style name="widget_title">
+        <item name="android:textColor">@color/WHITE</item>
+        <item name="android:textSize">80sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+
+    </style>
+
+    <style name="widget_text">
+        <item name="android:textSize">240sp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:layout_margin">2dp</item>
+
+    </style>
+
+</resources>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pikkucam</string>
+    <string name="take_picture">Capture</string>
+    <string name="action_confirm">Confirm action</string>
+    <string name="error_mac">Device already exists</string>
+    <string name="title_activity_new_main">NewMainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="presionar_boton_enlace">Mantén pulsado el botón del PIKKU para enlazar</string>
+    <string name="pulsa_titulo_sesion">Pulsa para añadir Título de la sesión</string>
+    <string name="titulo_video">Introduce el título que deseas</string>
+    <string name="configuracion_modos_sesion">Configuración Modos de Sesión</string>
+    <string name="slowmotion">Slowmotion</string>
+    <string name="sonido">Sonido</string>
+    <string name="pantalla_verde">Pantalla verde</string>
+    <string name="Movimientos">Movimientos</string>
+    <string name="modo">Modo </string>
+    <string name="camara">Camara </string>
+    <string name="calidad">Calidad vídeo </string>
+    <string name="publicidad">Promocion </string>
+    <string name="guardado_drive">Guardar en Google Drive </string>
+    <string name="subtitulos">Subtítulos </string>
+    <string name="subtitulo">Subtítulo </string>
+    <string name="subtitulo_default">Subtítulo</string>
+    <string name="subtitulo1_short">Subtítulo click botón azul corto: </string>
+    <string name="subtitulo1_short_default">Subtítulo click botón azul corto</string>
+    <string name="subtitulo1_long">Subtítulo click botón azul largo: </string>
+    <string name="subtitulo1_long_default">Subtítulo click botón azul largo</string>
+    <string name="subtitulo2_short">Subtítulo click botón rojo corto: </string>
+    <string name="subtitulo2_short_default">Subtítulo click botón rojo corto</string>
+    <string name="subtitulo2_long">Subtítulo click botón rojo largo: </string>
+    <string name="subtitulo2_long_default">Subtítulo click botón rojo largo</string>
+    <string name="frontal">Frontal </string>
+    <string name="trasera">Trasera </string>
+    <string name="alta">Alta </string>
+    <string name="media">Media </string>
+    <string name="baja">Baja </string>
+    <string name="duracion">Duración </string>
+    <string name="duraciondp">Duración: </string>
+    <string name="activado">Activado </string>
+    <string name="activado1">"Activar subtitulo fijo "</string>
+    <string name="activado4">Activado según el botón</string>
+    <string name="desactivado">Desactivado </string>
+    <string name="sigla_tiempo">s </string>
+    <string name="seleccionar_imagen">Seleccionar imagen </string>
+    <string name="introducir_cuenta_google">Introducir cuenta google </string>
+    <string name="modificar_cuenta_google">Modificar cuenta google </string>
+    <string name="cuenta_no_introducida">Cuenta google no introducida </string>
+    <string name="error_sign_in">Error al iniciar sesión </string>
+    <string name="duracion_maxima_info">La duración máxima es 120s</string>
+    <string name="numero_invalido">Número invalido</string>
+    <string name="modo_nombre">Introduce el nombre para el nuevo modo</string>
+    <string name="modo_eliminar">¿Estas seguro de que deseas eliminar el modo %1$s?</string>
+    <string name="video_eliminar">¿Estas seguro de que deseas eliminar el vídeo seleccionado?</string>
+    <string name="eliminar_ultimo">No puedes eliminar un modo si no existe otro</string>
+    <string name="videos">Vídeos</string>
+    <string name="cambiar_titulo">Pulsa aqui para cambiar el titulo</string>
+
+    <string-array name="xls_columns">
+        <item>Movimeinto</item>
+        <item>Fecha</item>
+        <item>Marca</item>
+        <item>Umbral</item>
+        <item>Correcto</item>
+        <item>Video</item>
+    </string-array>
+
+    <string-array name="array_name">
+        <item>Array Item One</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </string-array>
+
+
+    <string-array name="filter_type">
+        <item>Fecha Descendente</item>
+        <item>Fecha Ascendente</item>
+    </string-array>
+
+
+    <string name="publicidad_no_introducida">Tienes que incluir la imagen de promocion para activar la promocion</string>
+    <string name="camara_no_slowmotion">La camara seleccionada no permite slowmotion</string>
+    <string name="cambios_guardados">Cambios guardados con exito</string>
+    <string name="Concede_permisos">Tienes que conceder todos los permisos para que la aplicacion funcione</string>
+    <string name="confirmar_guardado">¿Seguro que deseas guardar los cambios?</string>
+    <string name="titulo_sesion">Subtítulo de la sesión</string>
+    <string name="duracions">Duración ´´</string>
+    <string name="tipo">Tipo</string>
+    <string name="perfil">Perfil</string>
+    <string name="calidad2">Calidad</string>
+    <string name="fecha_hora">Fecha y hora</string>
+    <string name="buscar">Buscar</string>
+    <string name="confirmar_salir">¿Seguro que deseas salir sin guardar los cambios?</string>
+    <string name="bluetooth_no_soportado">El dispositivo no soporta bluetooth, la aplicación se cerrará</string>
+    <string name="bluetooth_desactivado">Bluetooth está desactivado, activalo para poder interactuar con el dispositivo Pikku</string>
+    <string name="no_training">untrained</string>
+    <string name="training_started">training started</string>
+    <string name="training_succeeded">training succeeded</string>
+    <string name="training_failed">training failed</string>
+    <string name="crear_actividad">Create activity</string>
+    <string name="continuar">continue</string>
+    <string name="m_xima">Máxima</string>
+    <string name="enable_pikku_buttons">habilitar botones pikku</string>
+    <string name="button_blue">Botón Azul</string>
+    <string name="button_red">Botón Rojo</string>
+    <string name="ruta">Ruta a la carpeta de videos</string>
+    <string name="two_buttons">(Dos botones)</string>
+</resources>

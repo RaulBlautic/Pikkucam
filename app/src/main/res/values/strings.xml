@@ -1,0 +1,118 @@
+<resources>
+    <string name="app_name">Pikkucam</string>
+    <string name="take_picture">Capture</string>
+    <string name="action_confirm">Confirm action</string>
+    <string name="error_mac">Device already exists</string>
+    <string name="title_activity_new_main">NewMainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="presionar_boton_enlace">Press the PIKKU button to bind</string>
+    <string name="pulsa_titulo_sesion">Click to add session title</string>
+    <string name="titulo_video">Introduce title</string>
+    <string name="configuracion_modos_sesion">Session Modes Configuration</string>
+    <string name="slowmotion">Slowmotion</string>
+    <string name="sonido">Sound</string>
+    <string name="pantalla_verde">GreenScreen</string>
+    <string name="Movimientos">Movements</string>
+    <string name="modo">Session configuration </string>
+    <string name="camara">Camera </string>
+    <string name="calidad">Video quality </string>
+    <string name="publicidad">Promotion </string>
+    <string name="guardado_drive">Store in Google Drive </string>
+    <string name="subtitulos">Subtitles </string>
+    <string name="subtitulo">Subtítle </string>
+    <string name="subtitulo_default">Subtítle</string>
+    <string name="subtitulo1_short">Subtítle click blue button short: </string>
+    <string name="subtitulo1_short_default">Subtítle click blue button short</string>
+    <string name="subtitulo1_long">Subtítle click blue button long: </string>
+    <string name="subtitulo1_long_default">Subtítle click blue button long</string>
+    <string name="subtitulo2_short">Subtítle click red button short: </string>
+    <string name="subtitulo2_short_default">Subtítle click red button short</string>
+    <string name="subtitulo2_long">Subtítle click red button long: </string>
+    <string name="subtitulo2_long_default">Subtítle click red button long</string>
+    <string name="frontal">Frontal </string>
+    <string name="trasera">Back </string>
+    <string name="alta">High </string>
+    <string name="media">Medium </string>
+    <string name="baja">Low </string>
+    <string name="duracion">Duration </string>
+    <string name="duraciondp">Duration: </string>
+    <string name="activado">Activated </string>
+    <string name="activado1">Activate fixed subtitle</string>
+    <string name="activado4">Depending on button</string>
+    <string name="desactivado">Disable </string>
+    <string name="sigla_tiempo">s </string>
+    <string name="seleccionar_imagen">Select image </string>
+    <string name="introducir_cuenta_google">Introduce google account </string>
+    <string name="modificar_cuenta_google">Modify google account </string>
+    <string name="cuenta_no_introducida">Google account not introduced </string>
+    <string name="error_sign_in">Error at login </string>
+    <string name="duracion_maxima_info">Maximum duratión is 120s</string>
+    <string name="numero_invalido">Invalid number</string>
+    <string name="modo_nombre">Introduce the name for the new mode</string>
+    <string name="modo_eliminar">Are you sure you want to delete the mode %1$s?</string>
+    <string name="video_eliminar">Are you sure you want to delete the selected video?</string>
+    <string name="eliminar_ultimo">You can\'t delete a mode if there isn\'t another one</string>
+    <string name="videos">Videos</string>
+    <string name="cambiar_titulo">Press here to change the title</string>
+
+    <string-array name="xls_columns">
+        <item>Movement</item>
+        <item>Date</item>
+        <item>Score</item>
+        <item>Threshold</item>
+        <item>Correct</item>
+        <item>Video</item>
+    </string-array>
+
+    <string-array name="array_name">
+        <item>Array Item One</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </string-array>
+
+    <string-array name="filter_type">
+        <item>Date Descending</item>
+        <item>Date Ascending</item>
+    </string-array>
+
+
+    <string name="publicidad_no_introducida">You have to introduce the promotional image to enable promotion</string>
+    <string name="camara_no_slowmotion">Selected camera doesn\'t allow slowmotion</string>
+    <string name="cambios_guardados">Changes saved succesfully</string>
+    <string name="Concede_permisos">You have to give all permission for the application to work</string>
+    <string name="confirmar_guardado">Are you sure you want to save the changes?</string>
+    <string name="titulo_sesion">Session subtítle</string>
+    <string name="duracions">Duration ´´</string>
+    <string name="tipo">Type</string>
+    <string name="perfil">Profile</string>
+    <string name="calidad2">Quality</string>
+    <string name="fecha_hora">Date and hour</string>
+    <string name="buscar">Search</string>
+    <string name="confirmar_salir">Are you sure you want to exit without saving the changes?</string>
+    <string name="bluetooth_no_soportado">The device does not support bluetooth, the application will close</string>
+    <string name="bluetooth_desactivado">Bluetooth is disabled, enable it to interact with the Pikku device</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="pikku_Info_position">Una ubicación adecuada de pikkus es fundamental para monitorizar correctamente un conjunto de movimientos pero también restringirá los movimientos que puedes monitorizar</string>
+    <string name="no_training">no entrenado</string>
+    <string name="training_started">entrenando</string>
+    <string name="training_succeeded">entrenado</string>
+    <string name="training_failed">entrenamiento fallido</string>
+    <string name="edit_mov">Una Actividad son un conjunto de movimientos vinculados a una distribución específica de pikkus en el cuerpo. \n \n Por ejemplo: si colocas el pikku en tu muñeca podrás identificar movimientos como saques, golpes de derecha, reveses, etc</string>
+    <string name="crear_actividad">Crear Actividad</string>
+    <string name="continuar">Continuar</string>
+    <string name="m_xima">Maximum</string>
+    <string name="ruta">Path to video folder</string>
+    <string name="enable_pikku_buttons">Enable pikku buttons</string>
+    <string name="button_blue">Button Blue</string>
+    <string name="button_red">Button Red</string>
+    <string name="two_buttons">(Two Buttons)</string>
+
+</resources>

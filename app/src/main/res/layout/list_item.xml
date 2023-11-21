@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:elevation="1dp"
+        android:id="@+id/fondo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/select_state"
+        android:layout_marginBottom="50dp">
+
+        <ImageView
+            android:layout_margin="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/deporte"
+            android:scaleType="centerCrop"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/model_state"
+            android:visibility="invisible"
+            app:backgroundTint="@color/PIKKU_BLUE"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Processing"
+            android:textColor="@color/WHITE"
+            app:layout_constraintTop_toTopOf="@id/fondo"
+            app:layout_constraintStart_toStartOf="@id/fondo"
+            app:layout_constraintEnd_toEndOf="@id/fondo"
+            app:layout_constraintBottom_toBottomOf="@id/fondo"
+            app:cornerRadius="50dp"/>
+
+        <ImageView
+            android:id="@+id/camera_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_videocam"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="5dp"
+            app:tint="@color/WHITE"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_equalizer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="5dp"
+            app:tint="@color/WHITE"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/model_name"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/fondo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text=""
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_bold"
+        android:padding="5dp"
+        android:textColor="@color/WHITE"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

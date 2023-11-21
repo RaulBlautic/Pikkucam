@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_activities"
+    app:startDestination="@id/loginActivityFragment">
+
+    <fragment
+        android:id="@+id/loginActivityFragment"
+        android:name="com.blautic.pikkucam.ui.configactivity.LoginActivityFragment"
+        android:label="fragment_login_activity"
+        tools:layout="@layout/fragment_login_activity" >
+        <action
+            android:id="@+id/action_loginActivityFragment_to_activitySelectionFragment"
+            app:destination="@id/activitySelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/activitySelectionFragment"
+        android:name="com.blautic.pikkucam.ui.configactivity.ActivitySelectionFragment"
+        android:label="fragment_activity_selection"
+        tools:layout="@layout/fragment_activity_selection" />
+
+</navigation>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="20dp"
+        android:gravity="center|end"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Configuración de Actividad"
+                android:textColor="@color/WHITE"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/outline_info"
+                app:tint="@color/PIKKU_GRAY" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/model_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            tools:listitem="@layout/list_config_inference_item" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stop_button"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Finalizar"
+                android:textColor="@color/login_textField"
+                android:textSize="15sp"
+                app:backgroundTint="@color/PIKKU_RED"
+                app:cornerRadius="13dp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Confirmar"
+                android:textColor="@color/login_textField"
+                android:textSize="15sp"
+                app:backgroundTint="@color/PIKKU_ORANGE"
+                app:cornerRadius="13dp" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

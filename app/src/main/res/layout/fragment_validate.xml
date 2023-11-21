@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.training.ValidateFragment">
+
+    <VideoView
+        android:id="@+id/video_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageButton
+        android:id="@+id/delete_mov"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_delete"
+        app:tint="#FF2600"
+        android:background="@color/TRANSPARENT"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+        android:layout_margin="10dp"/>
+
+    <ImageButton
+        android:id="@+id/correct_mov"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_check"
+        app:tint="#B3FF00"
+        android:background="@color/TRANSPARENT"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/other_mov"
+        android:layout_margin="10dp"/>
+
+    <ImageButton
+        android:visibility="gone"
+        android:id="@+id/other_mov"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_cancel"
+        app:tint="@color/PIKKU_RED"
+        android:background="@color/TRANSPARENT"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+        android:layout_margin="10dp"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#B3FF0000">
+
+        <ImageButton
+            android:id="@+id/close_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_recurso_75"
+            android:background="@color/TRANSPARENT"/>
+
+        <ImageButton
+            android:id="@+id/pause"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/close_button"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_pause"
+            android:background="@color/TRANSPARENT"
+            app:tint="@color/button_yellow"
+            android:visibility="invisible"/>
+
+        <ImageButton
+            android:id="@+id/info"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/close_button"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_recurso_76"
+            android:background="@color/TRANSPARENT"
+            android:visibility="visible"/>
+
+        <ImageButton
+            android:id="@+id/play"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/close_button"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_play"
+            android:background="@color/TRANSPARENT"
+            app:tint="@color/button_yellow"
+            android:visibility="invisible"/>
+
+        <LinearLayout
+            android:id="@+id/separator"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/pause"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/WHITE"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:id="@+id/cap_count"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/separator"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Captura"
+                android:textColor="@color/WHITE"
+                android:textSize="15sp"
+                android:fontFamily="@font/nunito_bold"/>
+
+            <TextView
+                android:textAlignment="center"
+                android:id="@+id/video_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1/13"
+                android:textColor="@color/WHITE"
+                android:textSize="22sp"
+                android:fontFamily="@font/nunito_bold"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/separator2"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cap_count"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/WHITE"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:id="@+id/tittle_mov"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/separator2"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/movement__menu"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Movimientos"
+                app:placeholderTextColor="@color/WHITE"
+                android:textColorHint="@color/WHITE"
+                app:boxStrokeColor="@color/WHITE"
+                app:hintTextColor="@color/WHITE"
+                app:boxStrokeWidth="3dp"
+                app:boxStrokeErrorColor="@color/WHITE"
+                android:paddingHorizontal="16sp">
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/movement_type"
+                    android:layout_width="214dp"
+                    android:textColor="@color/WHITE"
+                    android:layout_height="match_parent"
+                    android:textSize="15sp"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/recurso_39_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
