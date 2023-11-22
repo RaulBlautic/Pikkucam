@@ -129,7 +129,7 @@ public class SecondFragment extends Fragment {
                     uiSwapBigSignal(false);
                     binding.imageViewBateria.setImageResource(R.drawable.recurso_bateria_0);
                     binding.imageViewConexion.setImageResource(R.drawable.recurso_conexion_0);
-                    updateSettingsFragmentViews(R.drawable.recurso_conexion_0, R.drawable.recurso_bateria_0);
+                    //updateSettingsFragmentViews(R.drawable.recurso_conexion_0, R.drawable.recurso_bateria_0);
 
                     bateria = 0;
                     conexion = 0;
@@ -208,7 +208,7 @@ public class SecondFragment extends Fragment {
 
             viewModel.setBatteryLiveData(batteryImageResource);
             binding.imageViewBateria.setImageResource(batteryImageResource);
-            updateSettingsFragmentViews(batteryImageResource, batteryImageResource);
+            //updateSettingsFragmentViews(batteryImageResource, batteryImageResource);
         }
 
         private void updateSettingsFragmentViews(int conexionImageResource, int batteryImageResource) {
