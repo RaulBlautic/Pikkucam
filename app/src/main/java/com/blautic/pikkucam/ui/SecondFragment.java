@@ -749,13 +749,17 @@ public class SecondFragment extends Fragment {
             Filter.addAction(NUMBER_VIDEO_OK);
             Filter.addAction(NUMBER_VIDEO_ERROR);
             try {
-                LocalBroadcastManager.getInstance(requireActivity()).unregisterReceiver(receiver);
+                if (isAdded()){
+                    LocalBroadcastManager.getInstance(requireActivity()).unregisterReceiver(receiver);
+                }
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             }
+            if (isAdded()){
+                if (binding.buttonPlay.getVisibility() == View.VISIBLE) {
 
-            if (binding.buttonPlay.getVisibility() == View.VISIBLE) {
-                LocalBroadcastManager.getInstance(requireActivity()).registerReceiver(receiver, Filter);
+                    LocalBroadcastManager.getInstance(requireActivity()).registerReceiver(receiver, Filter);
+                }
             }
         }, 1000);
 
